@@ -1,4 +1,5 @@
 <?php
+// esto es el index
 include("session.php");
  $conexion = mysqli_connect ("localhost","root", "", "admisiones_bd");
   $conexion->set_charset('utf8');
