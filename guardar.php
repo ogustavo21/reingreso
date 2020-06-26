@@ -1,4 +1,5 @@
 <?php
+//conexion a bd
 include("session.php");
 require 'conexion.php';
 
