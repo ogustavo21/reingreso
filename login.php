@@ -1,19 +1,16 @@
 <?php
 //include("conexion.php");
 //conexion a la base de datos
-$mysqli = new mysqli("localhost", "root", "", "admisiones_bd");
-	mysqli_set_charset($mysqli,"utf8");
-	if ($mysqli->connect_errno) {
-    printf("Falló la conexión: %s\n", $mysqli->connect_error);
-    exit();}
+include("utils/conexion.php");
+
 session_start();
  if($_SERVER["REQUEST_METHOD"] == "POST") {
       // username and password sent from form 
-      $myusername = mysqli_real_escape_string($mysqli,$_POST['matricula']);
-      $mypassword = mysqli_real_escape_string($mysqli,$_POST['password']); 
+      $myusername = mysqli_real_escape_string($conexion,$_POST['matricula']);
+      $mypassword = sha1(mysqli_real_escape_string($conexion,$_POST['password'])); 
       
-      $sql = "SELECT matricula FROM reingreso_r WHERE matricula = '$myusername' and password = '$mypassword'";
-      $result = mysqli_query($mysqli,$sql);
+     echo  $sql = "SELECT matricula FROM reingreso_r WHERE correo = '$myusername' and contrasena = '$mypassword'";
+      $result = mysqli_query($conexion,$sql);
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
       //$active = $row['active'];
       $count = mysqli_num_rows($result);
@@ -130,6 +127,7 @@ session_start();
                             <input name="contrasena" type="password" class="form-control" placeholder="Contraseña" required="" />
                         </div>
                         <div>
+                          <input type="submit" class="form-control" value="Registrarse" />
                             <a class="btn btn-default submit" href="registro.php">Registrarse</a>
                             <br><br><a href="#tologin" class="to_register"> Entrar </a>
                         </div>
