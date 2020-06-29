@@ -1,12 +1,8 @@
 <?php
 // esto es el index
 include("session.php");
- $conexion = mysqli_connect ("localhost","root", "", "admisiones_bd");
-  $conexion->set_charset('utf8');
-if ($conexion -> connect_errno)
-{
-    die("Fallo la conexion:(".$conexion -> mysqli_connect_errno().")".$conexion-> mysqli_connect_error());
-}
+include("utils\conexion.php");
+
 $user_check = $_SESSION['login_user'];
 //session_periodo
 /*$mysqli = new mysqli("localhost", "root", "", "portfolio");

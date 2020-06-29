@@ -1,21 +1,21 @@
 <?php
-    include_once("session.php");
-    require 'conexion.php';
-
+   // include_once("session.php");
+    require("utils/conexion.php");
+    @$matricula=$_POST['matricula'];
     @$nombre=$_POST['nombre'];
     @$paterno=$_POST['paterno'];
     @$materno=$_POST['materno'];
     @$correo=$_POST['correo'];
     @$telefono=$_POST['telefono'];
-    @$contrasena=$_POST['contrasena'];
+    @$contrasena=sha1($_POST['contrasena']);
 
-    $query =("INSERT INTO reingreso_bd (id_reingreso, nombre, a_paterno, a_materno, correo, telefono, contrasena, fecha, estatus) VALUES '',$nombre, $paterno, $materno, $correo, $telefono, $contrasena, CURRENT_TIMESTAMP, 1");
-	$result = $mysqli->query($query);
+    echo  $query ="INSERT INTO reingreso_r(id_reingreso, nombre, a_paterno, a_materno, correo, telefono, contrasena,  estatus, tipo, matricula) VALUES ('', '$nombre', '$paterno', '$materno', '$correo', '$telefono', '$contrasena', 1, 'Estudiante', '$matricula')";
+	$result = $conexion->query($query);
 	if ($result)      
 		{
-		mysqli_close ($mysqli);
+		mysqli_close ($conexion);
 		header("Location:login.php");
 		} else {
-		echo ("Error al guardar en Base de Datos: ". mysqli_error($mysqli));
+		echo ("Error al guardar en Base de Datos: ". mysqli_error($conexion));
 		}
 ?>
