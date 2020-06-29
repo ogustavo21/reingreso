@@ -15,7 +15,7 @@ $user_check = $_SESSION['login_user'];
     exit();}*/
 
 ?>
-
+ 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -78,23 +78,6 @@ $user_check = $_SESSION['login_user'];
                     </div>
                     <div class="clearfix"></div>
 
-
-                    <!-- menu prile quick info -->
-                    <div class="profile">
-                        <div class="profile_pic">
-                            <img src="images/picture.jpg" alt="..." class="img-circle profile_img">
-                        </div>
-                        <div class="profile_info">
-                            <span>Bienvenido,</span>
-                            <?php 
-                            echo "<h2>$user_check</h2>";
-                             ?>
-                            
-                        </div>
-                    </div>
-                    <!-- /menu prile quick info -->
-
-                    <br />
 
                     <?php 
                     include("menu.php");
