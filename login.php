@@ -9,7 +9,7 @@ session_start();
       $myusername = mysqli_real_escape_string($conexion,$_POST['matricula']);
       $mypassword = sha1(mysqli_real_escape_string($conexion,$_POST['password'])); 
       
-     echo  $sql = "SELECT matricula FROM reingreso_r WHERE correo = '$myusername' and contrasena = '$mypassword'";
+      $sql = "SELECT matricula FROM reingreso_r WHERE matricula = '$myusername' and contrasena = '$mypassword'";
       $result = mysqli_query($conexion,$sql);
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
       //$active = $row['active'];
@@ -20,7 +20,10 @@ session_start();
          $_SESSION['login_user'] = $myusername;
          header("location: index.php");
       }else {
-         $error = "El usuario o contreseña es inválido";
+    echo'<script type="text/javascript">
+    alert("El usuario o contraseña es inválido");
+    </script>';
+        // $error = "El usuario o contraseña es inválido";
       }
    }
 
@@ -127,8 +130,7 @@ session_start();
                             <input name="contrasena" type="password" class="form-control" placeholder="Contraseña" required="" />
                         </div>
                         <div>
-                          <input type="submit" class="form-control" value="Registrarse" />
-                            <a class="btn btn-default submit" href="registro.php">Registrarse</a>
+                          <input type="submit" href="registro.php" class="btn btn-default submit" value="Registrarse" />  
                             <br><br><a href="#tologin" class="to_register"> Entrar </a>
                         </div>
                         <div class="clearfix"></div>

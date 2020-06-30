@@ -12,7 +12,7 @@ $user_check = $_SESSION['login_user'];
     exit();}*/
 
 ?>
-
+ 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -75,23 +75,6 @@ $user_check = $_SESSION['login_user'];
                     </div>
                     <div class="clearfix"></div>
 
-
-                    <!-- menu prile quick info -->
-                    <div class="profile">
-                        <div class="profile_pic">
-                            <img src="images/picture.jpg" alt="..." class="img-circle profile_img">
-                        </div>
-                        <div class="profile_info">
-                            <span>Bienvenido,</span>
-                            <?php 
-                            echo "<h2>$user_check</h2>";
-                             ?>
-                            
-                        </div>
-                    </div>
-                    <!-- /menu prile quick info -->
-
-                    <br />
 
                     <?php 
                     include("menu.php");
@@ -194,7 +177,7 @@ $user_check = $_SESSION['login_user'];
                                                     <span class="step_no">7</span>
                                                     <span class="step_descr">
                                             Paso 7<br/>
-                                            <small>Cálculo cobro</small>
+                                            
                                         </span>
                                                 </a>
                                             </li>
@@ -203,53 +186,51 @@ $user_check = $_SESSION['login_user'];
                                                     <span class="step_no">8</span>
                                                     <span class="step_descr">
                                             Paso 8<br/>
-                                            <small>Enviar comprobante</small>
+                                           
                                         </span>
                                                 </a>
                                             </li>
                                         </ul>
                                         <div id="step-1" class="form-group">
-                                           <h1 class="StepTitle">Bienvenido(a)</h1>
+                                           <h1 class="StepTitle">Solicita revisión de adeudo</h1>
 
                                             <p class="instruccion">
-                                            Para comenzar con tu proceso de reinscripción registra tu matrícula en el campo que se te indica. 
-                                            <label class="control-label col-md-3">Matrícula<input type="text" class="form-control" name=""></label>
+                                            Para comenzar con tu proceso de reinscripción solicita la revisión de adeudos a Finanzas.
                                            </p>
-                                           
+                                           <form action="solicit_adeu.php" method="POST" enctype="multipart/form-data">                               
+                                            <input class="btn btn-default btn-sm" type="submit" name="Guardar" value="Enviar solicitud">
+                                            </form>
                                            
                                         </div>
                                         <div id="step-2">
-                                            <h1 class="StepTitle">Solicita revisión de adeudo</h1>
-                                            <form action="guardar.php" method="POST" enctype="multipart/form-data">
-                                            <input type="hidden" name="paso" value="2">                               
-                                            <input class="btn btn-default btn-sm" type="submit" name="Guardar" value="Guardar">
-                                            </form>
+                                            <h1 class="StepTitle">Revisión de Adeudo</h1>
+                                            <p>
+                                                Finanzas revisará su cuenta y      
+                                            </p>
                                         </div>
                                         <div id="step-3">
-                                            <h1 class="StepTitle">Revisión de Adeudo</h1>
-                                            <form action="guardar.php" method="POST" enctype="multipart/form-data">
-                                            <input class="btn btn-default btn-sm" type="submit" name="Guardar" value="Guardar">
-                                            </form>
-                                        </div>
-
-                                        <div id="step-4">
                                             <h1 class="StepTitle">Revisión de Teléfono y Correo</h1>
                                         </div>
 
-                                        <div id="step-5">
+                                        <div id="step-4">
                                             <h1 class="StepTitle">Revisión de candado</h1>
                                         </div>
-                                        <div id="step-6">
+
+                                        <div id="step-5">
                                             <h1 class="StepTitle">Carga académica</h1>
                                         </div>
-                                        <div id="step-7">
+                                        <div id="step-6">
                                             <h1 class="StepTitle">Cálculo de cobro</h1>
                                         </div>
-                                        <div id="step-8">
+                                        <div id="step-7">
                                             <h1 class="StepTitle">Enviar comprobante</h1>
                                             <form action="" method="POST" enctype="multipart/form-data">              
                                             <input class="form-control" type="file" name="Guardar" value="Guardar">
                                             </form>
+                                        </div>
+                                        <div id="step-8">
+                                            <h1 class="StepTitle">Bienvenid@</h1>
+                                            
                                         </div>
                                     </div>
                                     <!-- End SmartWizard Content -->    

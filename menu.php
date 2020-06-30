@@ -8,7 +8,22 @@
     $admin = array(0=>"admin","tipo"=>"admin");
     ?>
 
+<!-- menu prile quick info -->
+    <div class="profile">
+        <div class="profile_pic">
+            <img src="images/picture.jpg" alt="..." class="img-circle profile_img">
+        </div>
+        <div class="profile_info">
+            <span>Bienvenido,</span>
+            <?php 
+            echo "<h2>$user_check</h2>";
+            ?>
+                            
+        </div>
+    </div>
+<!-- /menu prile quick info -->
 
+                    <br />
      <!-- sidebar menu -->
                     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
 
@@ -17,11 +32,14 @@
                             <ul class="nav side-menu">
                                 <li><a><i class="fa fa-check-square-o"></i> Reingreso </a>
                                 </li>
-                                
+                                 <li id="revision" style=""><a href="revisar_adeu.php"><i class="fa fa-bar-chart"></i> Revisión de adeudo </a>
+                                    </li>
                                 <?php 
                                 if ($tipo_usuario==$admin) {
                                 ?>  
-                                    <li id="reportes" style=""><a href="reportes.php"><i class="fa fa-bar-chart"></i> Reportes </a>
+                                    <li id="revision" style=""><a href="revisar_adeu.php"><i class="fa fa-bar-chart"></i> Revisión de adeudo </a>
+                                    </li>  
+                                     <li id="reportes" style=""><a href="reportes.php"><i class="fa fa-bar-chart"></i> Reportes </a>
                                     </li>  
                                 <?php
                                 } else {
