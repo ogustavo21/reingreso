@@ -177,7 +177,7 @@ $user_check = $_SESSION['login_user'];
                                                     <span class="step_no">7</span>
                                                     <span class="step_descr">
                                             Paso 7<br/>
-                                            <small>Cálculo cobro</small>
+                                            
                                         </span>
                                                 </a>
                                             </li>
@@ -186,7 +186,7 @@ $user_check = $_SESSION['login_user'];
                                                     <span class="step_no">8</span>
                                                     <span class="step_descr">
                                             Paso 8<br/>
-                                            <small>Enviar comprobante</small>
+                                           
                                         </span>
                                                 </a>
                                             </li>
@@ -196,7 +196,7 @@ $user_check = $_SESSION['login_user'];
 
                                             <p class="instruccion">
                                             Para comenzar con tu proceso de reinscripción registra tu matrícula en el campo que se te indica. 
-                                            <label class="control-label col-md-3">Matrícula<input type="text" class="form-control" name=""></label>
+                                            
                                            </p>
                                            
                                            
