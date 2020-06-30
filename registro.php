@@ -9,9 +9,9 @@
     $telefono=$_POST['telefono'];
     $contrasena=sha1($_POST['contrasena']);
 
-    echo  $query ="INSERT INTO reingreso_r(id_reingreso, nombre, a_paterno, a_materno, correo, telefono, contrasena,  estatus, tipo, matricula) VALUES ('', '$nombre', '$paterno', '$materno', '$correo', '$telefono', '$contrasena', 1, 'Estudiante', '$matricula')";
+    echo  $query ="INSERT INTO reingreso_r(id_reingreso, nombre, a_paterno, a_materno, correo, telefono, contrasena,  estatus, tipo, matricula) VALUES ('', '$nombre', '$paterno', '$materno', '$correo', '$telefono', '$contrasena', 1, 'Estudiante', '$matricula') WHERE matricula NOT EXISTS (SELECT matricula FROM reingreso_r WHERE matricula=$matricula)";
 	$result = $conexion->query($query);
-    
+
 	if ($result)      
 		{
 		mysqli_close ($conexion);

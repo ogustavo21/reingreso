@@ -32,11 +32,14 @@
                             <ul class="nav side-menu">
                                 <li><a><i class="fa fa-check-square-o"></i> Reingreso </a>
                                 </li>
-                                
+                                 <li id="revision" style=""><a href="revisar_adeu.php"><i class="fa fa-bar-chart"></i> Revisión de adeudo </a>
+                                    </li>
                                 <?php 
                                 if ($tipo_usuario==$admin) {
                                 ?>  
-                                    <li id="reportes" style=""><a href="reportes.php"><i class="fa fa-bar-chart"></i> Reportes </a>
+                                    <li id="revision" style=""><a href="revisar_adeu.php"><i class="fa fa-bar-chart"></i> Revisión de adeudo </a>
+                                    </li>  
+                                     <li id="reportes" style=""><a href="reportes.php"><i class="fa fa-bar-chart"></i> Reportes </a>
                                     </li>  
                                 <?php
                                 } else {

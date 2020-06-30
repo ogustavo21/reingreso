@@ -9,7 +9,7 @@ session_start();
       $myusername = mysqli_real_escape_string($conexion,$_POST['matricula']);
       $mypassword = sha1(mysqli_real_escape_string($conexion,$_POST['password'])); 
       
-     echo  $sql = "SELECT matricula FROM reingreso_r WHERE matricula = '$myusername' and contrasena = '$mypassword'";
+      $sql = "SELECT matricula FROM reingreso_r WHERE matricula = '$myusername' and contrasena = '$mypassword'";
       $result = mysqli_query($conexion,$sql);
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
       //$active = $row['active'];
