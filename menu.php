@@ -30,10 +30,14 @@
                         <div class="menu_section">
                             <h3>General</h3>
                             <ul class="nav side-menu">
-                                <li><a><i class="fa fa-check-square-o"></i> Reingreso </a>
+                                <li><a href="index.php"><i class="fa fa-check-square-o"></i> Reingreso </a>
                                 </li>
-                                 <li id="revision" style=""><a href="revisar_adeu.php"><i class="fa fa-bar-chart"></i> Revisión de adeudo </a>
-                                    </li>
+                                <li id="revision" style=""><a href="revisar_adeu.php"><i class="fa fa-bar-chart"></i> Revisión de adeudo </a>
+                                </li>
+                                <li id="revision" style=""><a href="revisar_admision.php"><i class="fa fa-bar-chart"></i> Revisión de correo </a>
+                                </li>
+                                <li id="revision" style=""><a href="revisar_candado.php"><i class="fa fa-bar-chart"></i> Revisión de candado </a>
+                                </li>
                                 <?php 
                                 if ($tipo_usuario==$admin) {
                                 ?>  

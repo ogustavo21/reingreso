@@ -86,7 +86,7 @@ $user_check = $_SESSION['login_user'];
                 <div class="">
                     <div class="page-title">
                         <div class="title_left">
-                            <h3>Revisión de adeudo</h3>
+                            <h3>Revisión de candado</h3>
                         </div>
                     </div>
                     <div class="clearfix"></div>
@@ -112,7 +112,7 @@ $user_check = $_SESSION['login_user'];
                                         </thead>
                                        <?php
 
-                                        $query="SELECT * FROM reingreso_r WHERE (SELECT id_reingreso FROM pasos_r WHERE idPaso_r=3)";
+                                        $query="SELECT * FROM reingreso_r WHERE (SELECT id_reingreso FROM pasos_r WHERE idPaso_r=5)";
                                        // $resultado = $conexion->query($query);
                                         $result=mysqli_query($conexion,$query);
 
@@ -127,7 +127,7 @@ $user_check = $_SESSION['login_user'];
                                             <td><?php echo $fila['a_paterno']; ?></td>
                                             <td><?php echo $fila['a_materno']; ?></td>
                                             <td><?php echo $fila['correo']; ?></td>
-                                            <td><a href="confirm_adeu.php?id=<?php echo $fila['id']; ?>"  class="btn" >Confirmar</a></td>
+                                            <td><a href="confirm_cand.php?id=<?php echo $fila['id_reingreso']; ?>"  class="btn" >Confirmar</a></td>
                                         </tr>
                                        <?php
                                        }
