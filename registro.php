@@ -25,7 +25,7 @@
 		//echo ("Error al guardar en Base de Datos: ". mysqli_error($conexion));
 		}
 
-    $query1="INSERT INTO pasos_r (id_pasos, id_reingreso,idPaso_r,estatus) VALUES ('',$id_reingreso,2,1)";
-    $result = $conexion->query($query1);
+    /*$query1="INSERT INTO pasos_r (id_pasos, id_reingreso,idPaso_r,estatus) VALUES ('',$id_reingreso,2,1)";
+    $result = $conexion->query($query1);*/
 
 ?>
