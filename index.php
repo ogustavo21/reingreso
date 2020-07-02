@@ -210,6 +210,9 @@ $user_check = $_SESSION['login_user'];
                                         </div>
                                         <div id="step-3">
                                             <h1 class="StepTitle">Revisión de Teléfono y Correo</h1>
+                                            <p class="instruccion">
+                                                Admisiones verificará tus datos en el sistema, espere a que se lleve a cabo el proceso.     
+                                            </p>
                                         </div>
 
                                         <div id="step-4">
@@ -225,7 +228,7 @@ $user_check = $_SESSION['login_user'];
                                         <div id="step-7">
                                             <h1 class="StepTitle">Enviar comprobante</h1>
                                             <form action="" method="POST" enctype="multipart/form-data">              
-                                            <input class="form-control" type="file" name="Guardar" value="Guardar">
+                                            <input class="form-control" type="file" name="Guardar" value="Enviar">
                                             </form>
                                         </div>
                                         <div id="step-8">
