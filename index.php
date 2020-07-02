@@ -204,8 +204,8 @@ $user_check = $_SESSION['login_user'];
                                         </div>
                                         <div id="step-2">
                                             <h1 class="StepTitle">Revisión de Adeudo</h1>
-                                            <p>
-                                                Finanzas revisará su cuenta y      
+                                            <p class="instruccion">
+                                                Finanzas revisará su cuenta, espere a que se lleve acabo el proceso.     
                                             </p>
                                         </div>
                                         <div id="step-3">

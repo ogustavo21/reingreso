@@ -30,7 +30,7 @@
                         <div class="menu_section">
                             <h3>General</h3>
                             <ul class="nav side-menu">
-                                <li><a><i class="fa fa-check-square-o"></i> Reingreso </a>
+                                <li><a href="index.php"><i class="fa fa-check-square-o"></i> Reingreso </a>
                                 </li>
                                  <li id="revision" style=""><a href="revisar_adeu.php"><i class="fa fa-bar-chart"></i> Revisión de adeudo </a>
                                     </li>

@@ -1,4 +1,3 @@
-
 <?php
 // esto es el index
 include("session.php");
@@ -112,7 +111,7 @@ $user_check = $_SESSION['login_user'];
                                         </thead>
                                        <?php
 
-                                        $query="SELECT * FROM reingreso_r WHERE (SELECT id_reingreso FROM pasos_r WHERE idPaso_r=3)";
+                                        $query="SELECT * FROM reingreso_r WHERE (SELECT id_reingreso FROM pasos_r WHERE idPaso_r=4)";
                                        // $resultado = $conexion->query($query);
                                         $result=mysqli_query($conexion,$query);
 
@@ -127,7 +126,7 @@ $user_check = $_SESSION['login_user'];
                                             <td><?php echo $fila['a_paterno']; ?></td>
                                             <td><?php echo $fila['a_materno']; ?></td>
                                             <td><?php echo $fila['correo']; ?></td>
-                                            <td><a href="confirm_adeu.php?id=<?php echo $fila['id']; ?>"  class="btn" >Confirmar</a></td>
+                                            <td><a href="confirm_admis.php?id=<?php echo $fila['id']; ?>"  class="btn" >Confirmar</a></td>
                                         </tr>
                                        <?php
                                        }
