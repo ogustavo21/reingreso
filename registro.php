@@ -16,14 +16,14 @@
 		{
 		mysqli_close ($conexion);
 		header("Location:login.php");
+        $query1="INSERT INTO pasos_r (id_pasos, id_reingreso,idPaso_r,estatus) VALUES ('','',2,1)";
+        $result = $conexion->query($query1);
 		} else {
          echo'<script type="text/javascript">
         alert("Ésta matrícula ya está registrada");
         </script>';  
 		//echo ("Error al guardar en Base de Datos: ". mysqli_error($conexion));
 		}
-
-    $id_reingreso="SELECT id_reingreso FROM reingreso_r WHERE matricula='$matricula'";
 
     $query1="INSERT INTO pasos_r (id_pasos, id_reingreso,idPaso_r,estatus) VALUES ('',$id_reingreso,2,1)";
     $result = $conexion->query($query1);

@@ -6,11 +6,6 @@ include("utils\conexion.php");
 
 $user_check = $_SESSION['login_user'];
 
-$sentencia_select="SELECT * FROM reingreso_r ORDER BY id ASC";
-    $resultado = $conexion->query($sentencia_select);
-    $resultado=$sentencia_select->fetchAll();
-    if (!$resultado) {
-    }
 ?>
 
 <!DOCTYPE html>
@@ -107,26 +102,36 @@ $sentencia_select="SELECT * FROM reingreso_r ORDER BY id ASC";
                                                 
                                                 <th>Id </th>
                                                 <th>Matrícula</th>
-                                                <th>Categoría</th>
-                                                <th>Opción</th>
-                                                <th>Archivo/Respuesta</th>
-                                                <th>Materia</th>
-                                                <th>Periodo</th>
+                                                <th>Nombre</th>
+                                                <th>Apellidos</th>
+                                                <th></th>
+                                                <th>Correo</th>
                                                 <td colspan="2">Acción</td>
                                                 
                                             </tr>
                                         </thead>
-                                        <?php foreach($resultado as $fila):?>
+                                       <?php
+
+                                        $query="SELECT * FROM reingreso_r ORDER BY id_reingreso ASC";
+                                       // $resultado = $conexion->query($query);
+                                        $result=mysqli_query($conexion,$query);
+
+                                        while($fila=mysqli_fetch_array($result)){
+
+                                        
+                                       ?>
                                         <tr >  
                                             <td><?php echo $fila['id_reingreso']; ?></td>
+                                            <td><?php echo $fila['matricula']; ?></td>
                                             <td><?php echo $fila['nombre']; ?></td>
                                             <td><?php echo $fila['a_paterno']; ?></td>
                                             <td><?php echo $fila['a_materno']; ?></td>
                                             <td><?php echo $fila['correo']; ?></td>
-                                            <td><?php echo $fila['matricula']; ?></td>
                                             <td><a href="update.php?id=<?php echo $fila['id']; ?>"  class="btn" >Confirmar</a></td>
                                         </tr>
-                                        <?php endforeach ?>
+                                       <?php
+                                       }
+                                       ?>
                                         </table>
                             </div>
                             </div>
