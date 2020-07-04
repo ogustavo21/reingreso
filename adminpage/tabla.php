@@ -1,5 +1,9 @@
 <?php  
 include("../utils/conexion.php");
+$mboton="";
+$nombre="";
+$id=0;
+$pasoguardar="";
 
                 // consulta para obetener tipo y carrera
                 //$query91 = "SELECT * from registro where id_registro='".$_SESSION['k_username']."' ";    
@@ -23,11 +27,20 @@ include("../utils/conexion.php");
 
                 // filtrar tipos
                 if ($tipo=="Finanzas") {
-                    $pasoActual=2;
-                    $pasoguardar=3;
-                    $mboton="Convenio";
-                    $activo1="active";
-
+                            $pasoActual=2;
+                            $pasoguardar=3;
+                            $mboton="Convenio";
+                            $activo1="";
+                            $activo2="";
+                            $activo3="";
+                     if(isset($_REQUEST['x']) && $_REQUEST['x']==465465465){
+                            $pasoActual=2;
+                            $pasoguardar=3;
+                            $mboton="Convenio";
+                            $activo1="active";
+                            $activo2="";
+                            $activo3="";
+                        }
                     //$x=$_REQUEST['x'];
                         if(isset($_REQUEST['x']) && $_REQUEST['x']==5465465465){
                             $pasoActual=6;
@@ -35,6 +48,7 @@ include("../utils/conexion.php");
                             $mboton="Calculo";
                             $activo2="active";
                             $activo1="";
+                            $activo3="";
                         }
                          if(isset($_REQUEST['x']) && $_REQUEST['x']==89756687654){
                             $pasoActual=8;
@@ -42,7 +56,10 @@ include("../utils/conexion.php");
                             $mboton="Pagado";
                             $activo3="active";
                             $activo1="";
+                            $activo2="";
                         } 
+
+
                     }
                 if ($tipo=="Admision")
                     {
@@ -71,11 +88,14 @@ include("../utils/conexion.php");
       // $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
       //$active = $row['active'];
       //$count = mysqli_num_rows($result);
+        if ($tipo=="Finanzas") {
          ?>
+        
+
          
          <div class="" role="tabpanel" data-example-id="togglable-tabs">
                                           <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-                                                <li role="presentation" class="<?php echo $activo1;?>"><a onclick="refresh('123')" id="home-tab" role="tab" data-toggle="tab" aria-expanded="false">Convenio</a>
+                                                <li role="presentation" class="<?php echo $activo1;?>"><a onclick="refresh('465465465')" id="home-tab" role="tab" data-toggle="tab" aria-expanded="false">Convenio</a>
                                                 </li>
                                                 <li role="presentation" class="<?php echo $activo2;?>" ><a onclick="refresh('5465465465')" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="true">Calculo de cobro</a>
                                                 </li>
@@ -83,6 +103,7 @@ include("../utils/conexion.php");
                                                 </li>
                                             </ul>
          </div>
+         <?php }?>
                                     <!-- start project list -->
                                     <table class=" table table-striped responsive-utilities jambo_table" id="tabla">
                                         <thead>
