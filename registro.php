@@ -9,6 +9,19 @@
     $telefono=$_POST['telefono'];
     $contrasena=sha1($_POST['contrasena']);
 
+    $url = "http://189.194.95.69:3000/personales/".$matricula;
+    $json = file_get_contents($url);
+    $obj = json_decode($json);
+
+    foreach ($obj as $key => $value) {
+        echo $datos['CODIGO_PERSONAL']=$obj[$key]->NOMBRE;
+        echo "<br>";
+    }
+
+    if ($datos!=null) {
+        echo "ya está";
+    }
+
     $query ="INSERT INTO reingreso_r(id_reingreso, nombre, a_paterno, a_materno, correo, telefono, contrasena,  estatus, tipo, matricula) VALUES ('', '$nombre', '$paterno', '$materno', '$correo', '$telefono', '$contrasena', 1, 'Estudiante', '$matricula')";
 	$result = $conexion->query($query);
 
