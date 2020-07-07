@@ -19,7 +19,7 @@
                                     <li>
                                         <a href="javascript:;">Ayuda</a>
                                     </li>
-                                    <li><a href="outss.php"><i class="fa fa-sign-out pull-right"></i>Cerrar Sesión</a>
+                                    <li><a href="../outss.php"><i class="fa fa-sign-out pull-right"></i>Cerrar Sesión</a>
                                     </li>
                                 </ul>
                             </li>

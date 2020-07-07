@@ -1,149 +1,47 @@
-<?php
-// esto es el index
-include("session.php");
-include("utils\conexion.php");
-
-$user_check = $_SESSION['login_user'];
-//session_periodo
-/*$mysqli = new mysqli("localhost", "root", "", "portfolio");
-    mysqli_set_charset($mysqli,"utf8");
-    if ($mysqli->connect_errno) {
-    printf("Falló la conexión: %s\n", $mysqli->connect_error);
-    exit();}*/
-
-?>
- 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Portafolio Docente | </title>
-
-    <!-- Bootstrap core CSS -->
-
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <link href="fonts/css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/animate.min.css" rel="stylesheet">
-
-    <!-- Custom styling plus plugins -->
-    <link href="css/custom.css" rel="stylesheet">
-    <link href="css/icheck/flat/green.css" rel="stylesheet">
-    <!-- editor -->
-    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
-    <link href="css/editor/external/google-code-prettify/prettify.css" rel="stylesheet">
-    <link href="css/editor/index.css" rel="stylesheet">
-    <!-- select2 -->
-    <link href="css/select/select2.min.css" rel="stylesheet">
-    <!-- switchery -->
-    <link rel="stylesheet" href="css/switchery/switchery.min.css" />
-    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>  
-    
-
-    <!--[if lt IE 9]>
-        <script src="../assets/js/ie8-responsive-file-warning.js"></script>
-        <![endif]-->
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
-</head>
-
-
-<body class="nav-md">
-
-    <div class="container body">
-
-
-        <div class="main_container">
-
-            <div class="col-md-3 left_col">
-                <div class="left_col scroll-view">
-
-                    <div class="navbar nav_title" style="border: 0;" align="center">
-
-                        <a href="index.html" class="site_title"> <img src="eDocenteLogo.png" alt=""> </a>
+				<footer>
+                    <div class="">
+                        <p class="pull-right">Gentelella Alela! a Bootstrap 3 template by <a>Kimlabs</a>. |
+                            <span class="lead"> <i class="fa fa-paw"></i> Universidad de Navojoa</span>
+                        </p>
                     </div>
                     <div class="clearfix"></div>
+                </footer>
+
+</div>
 
 
-                    <?php 
-                    include("menu.php");
-                    ?>
-                    
-                    <!-- /menu footer buttons -->
-                </div>
-            </div>
-
-            <!-- top navigation -->
-            <div class="top_nav">
-
-                <?php 
-                include("navbar.php");
-                 ?>
-
-            </div>
-            <!-- /top navigation -->
-
-            <!-- page content -->
-     
-            <!-- /page content -->
-
-            <!-- footer content -->
-            <?php
-            include("footer.php");
-            ?>
-            <!-- /footer content -->
-    </div>
-
-        <div id="custom_notifications" class="custom-notifications dsp_none">
-            <ul class="list-unstyled notifications clearfix" data-tabbed_notifications="notif-group">
-            </ul>
-            <div class="clearfix"></div>
-            <div id="notif-group" class="tabbed_notifications"></div>
-        </div>
-
-        <script src="js/bootstrap.min.js"></script>
+ <script src="../js/bootstrap.min.js"></script>
 
         <!-- chart js -->
-        <script src="js/chartjs/chart.min.js"></script>
+        <script src="../js/chartjs/chart.min.js"></script>
         <!-- bootstrap progress js -->
-        <script src="js/progressbar/bootstrap-progressbar.min.js"></script>
-        <script src="js/nicescroll/jquery.nicescroll.min.js"></script>
+        <script src="../js/progressbar/bootstrap-progressbar.min.js"></script>
+        <script src="../js/nicescroll/jquery.nicescroll.min.js"></script>
         <!-- icheck -->
-        <script src="js/icheck/icheck.min.js"></script>
+        <script src="../js/icheck/icheck.min.js"></script>
         <!-- tags -->
-        <script src="js/tags/jquery.tagsinput.min.js"></script>
+        <script src="../js/tags/jquery.tagsinput.min.js"></script>
         <!-- switchery -->
-        <script src="js/switchery/switchery.min.js"></script>
+        <script src="../js/switchery/switchery.min.js"></script>
         <!-- daterangepicker -->
-        <script type="text/javascript" src="js/moment.min2.js"></script>
-        <script type="text/javascript" src="js/datepicker/daterangepicker.js"></script>
+        <script type="text/javascript" src="../js/moment.min2.js"></script>
+        <script type="text/javascript" src="../js/datepicker/daterangepicker.js"></script>
         <!-- richtext editor -->
-        <script src="js/editor/bootstrap-wysiwyg.js"></script>
-        <script src="js/editor/external/jquery.hotkeys.js"></script>
-        <script src="js/editor/external/google-code-prettify/prettify.js"></script>
+        <script src="../js/editor/bootstrap-wysiwyg.js"></script>
+        <script src="../js/editor/external/jquery.hotkeys.js"></script>
+        <script src="../js/editor/external/google-code-prettify/prettify.js"></script>
         <!-- select2 -->
-        <script src="js/select/select2.full.js"></script>
+        <script src="../js/select/select2.full.js"></script>
         <!-- form validation -->
-        <script type="text/javascript" src="js/parsley/parsley.min.js"></script>
+        <script type="text/javascript" src="../js/parsley/parsley.min.js"></script>
         <!-- textarea resize -->
-        <script src="js/textarea/autosize.min.js"></script>
+        <script src="../js/textarea/autosize.min.js"></script>
         <script>
             autosize($('.resizable_textarea'));
         </script>
         <!-- Autocomplete -->
-        <script type="text/javascript" src="js/autocomplete/countries.js"></script>
-        <script src="js/autocomplete/jquery.autocomplete.js"></script>
+        <script type="text/javascript" src="../js/autocomplete/countries.js"></script>
+        <script src="../js/autocomplete/jquery.autocomplete.js"></script>
         <script type="text/javascript">
             $(function () {
                 'use strict';
@@ -160,7 +58,7 @@ $user_check = $_SESSION['login_user'];
                 });
             });
         </script>
-        <script src="js/custom.js"></script>
+        <script src="../js/custom.js"></script>
 
 
         <!-- select2 -->
@@ -311,7 +209,7 @@ $user_check = $_SESSION['login_user'];
         <!-- /editor -->
 
 
-                <script type="text/javascript" src="js/wizard/jquery.smartWizard.js"></script>
+                <script type="text/javascript" src="../js/wizard/jquery.smartWizard.js"></script>
                 <script type="text/javascript">
                     $(document).ready(function () {
                         // Smart Wizard     
@@ -332,6 +230,6 @@ $user_check = $_SESSION['login_user'];
                     });
                 </script>
 
-</body>
+                </body>
 
 </html>

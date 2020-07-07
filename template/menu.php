@@ -1,5 +1,5 @@
     <?php
-    include_once("session.php");
+    include_once("../session.php");
     @$user_check = $_SESSION['login_user'];
     $conexion = mysqli_connect ("localhost","root", "", "admisiones_bd");
     $conexion->set_charset('utf8');
@@ -11,7 +11,7 @@
 <!-- menu prile quick info -->
     <div class="profile">
         <div class="profile_pic">
-            <img src="images/picture.jpg" alt="..." class="img-circle profile_img">
+            <img src="../images/picture.jpg" alt="..." class="img-circle profile_img">
         </div>
         <div class="profile_info">
             <span>Bienvenido,</span>
