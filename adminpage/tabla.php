@@ -1,6 +1,5 @@
 <?php  
 include("../utils/conexion.php");
-include_once("../session.php");
 $mboton="";
 $nombre="";
 $id=0;
