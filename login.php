@@ -9,16 +9,23 @@ session_start();
       $myusername = mysqli_real_escape_string($conexion,$_POST['matricula']);
       $mypassword = sha1(mysqli_real_escape_string($conexion,$_POST['password'])); 
       
-      $sql = "SELECT matricula FROM reingreso_r WHERE matricula = '$myusername' and contrasena = '$mypassword'";
+      $sql = "SELECT * FROM reingreso_r WHERE matricula = '$myusername' and contrasena = '$mypassword'";
       $result = mysqli_query($conexion,$sql);
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-      //$active = $row['active'];
+      //$tipo = $row['tipo'];
       $count = mysqli_num_rows($result);
       
       if($count == 1) {
          //session_register("myusername");
-         $_SESSION['login_user'] = $myusername;
+         $_SESSION['login_user'] =  $row['matricula'];
+         $_SESSION['tipo'] =  $row['tipo'];
+         if ($row['tipo']=="Estudiante")
+
          header("location: index.php");
+        else {
+        header("location: adminpage/consola.php");
+
+        }
       }else {
     echo'<script type="text/javascript">
     alert("El usuario o contraseña es inválido");

@@ -1,4 +1,7 @@
- <div class="nav_menu">
+                <!-- top navigation -->
+            <div class="top_nav">
+
+                   <div class="nav_menu">
                     <nav class="" role="navigation">
                         <div class="nav toggle">
                             <a id="menu_toggle"><i class="fa fa-bars"></i></a>
@@ -19,7 +22,7 @@
                                     <li>
                                         <a href="javascript:;">Ayuda</a>
                                     </li>
-                                    <li><a href="../outss.php"><i class="fa fa-sign-out pull-right"></i>Cerrar Sesión</a>
+                                    <li><a href="/reingreso/outss.php"><i class="fa fa-sign-out pull-right"></i>Cerrar Sesión</a>
                                     </li>
                                 </ul>
                             </li>
@@ -29,3 +32,5 @@
                         </ul>
                     </nav>
                 </div>
+
+            </div>

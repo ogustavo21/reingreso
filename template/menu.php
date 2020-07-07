@@ -1,17 +1,29 @@
     <?php
-    include_once("../session.php");
-    @$user_check = $_SESSION['login_user'];
-    $conexion = mysqli_connect ("localhost","root", "", "admisiones_bd");
-    $conexion->set_charset('utf8');
-    $query = $conexion -> query("SELECT tipo FROM reingreso_r WHERE matricula=$user_check");
-    $tipo_usuario = mysqli_fetch_array($query);
-    $admin = array(0=>"admin","tipo"=>"admin");
+
+   $tipo_usuario = $_SESSION['tipo'];
+    $user_check = $_SESSION['login_user'];
     ?>
+
+
+<div class="container body">
+
+
+        <div class="main_container">
+
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+
+                    <div class="navbar nav_title" style="border: 0;" align="center">
+
+                        <a href="/reingreso/index.php" class="site_title"> <img src="/reingreso/eDocenteLogo.png" alt=""> </a>
+                    </div>
+                    <div class="clearfix"></div>
+
 
 <!-- menu prile quick info -->
     <div class="profile">
         <div class="profile_pic">
-            <img src="../images/picture.jpg" alt="..." class="img-circle profile_img">
+            <img src="/reingreso/images/picture.jpg" alt="..." class="img-circle profile_img">
         </div>
         <div class="profile_info">
             <span>Bienvenido,</span>
@@ -30,27 +42,20 @@
                         <div class="menu_section">
                             <h3>General</h3>
                             <ul class="nav side-menu">
-                                <li><a href="index.php"><i class="fa fa-check-square-o"></i> Reingreso </a>
-                                </li>
-                                <li id="revision" style=""><a href="revisar_adeu.php"><i class="fa fa-bar-chart"></i> Revisión de adeudo </a>
-                                </li>
-                                <li id="revision" style=""><a href="revisar_admision.php"><i class="fa fa-bar-chart"></i> Revisión de correo </a>
-                                </li>
-                                <li id="revision" style=""><a href="revisar_candado.php"><i class="fa fa-bar-chart"></i> Revisión de candado </a>
-                                </li>
+                                
                                 <?php 
-                                if ($tipo_usuario==$admin) {
+                                
+                                if ($tipo_usuario=="Estudiante") {
                                 ?>  
-                                    <li id="revision" style=""><a href="revisar_adeu.php"><i class="fa fa-bar-chart"></i> Revisión de adeudo </a>
+                                    <li id="reportes" style=""><a href="/reingreso/index.php"><i class="fa fa-bar-chart"></i> Reincripcion </a>
                                     </li>  
-                                     <li id="reportes" style=""><a href="reportes.php"><i class="fa fa-bar-chart"></i> Reportes </a>
-                                    </li>  
+     
                                 <?php
                                 } else {
                                 ?>
-                                <script>
-                                    document.getElementById("reportes").style.display = "block";
-                                </script>
+                                 <li id="revision" style=""><a href="/reingreso/adminpage/consola.php"><i class="fa fa-bar-chart"></i> Panel de control </a>
+                                    </li>  
+                                    
                                <?php  } 
                                ?>
                                 
@@ -60,3 +65,7 @@
 
                     </div>
                     <!-- /sidebar menu -->
+                    
+                        <!-- /menu footer buttons -->
+                </div>
+            </div>

@@ -1,5 +1,6 @@
 <?php  
 include("../utils/conexion.php");
+include_once("../session.php");
 $mboton="";
 $nombre="";
 $id=0;
@@ -83,7 +84,7 @@ $pasoguardar="";
                     }
                              
       // lista por carrera y pasos
-        echo  $sql = "SELECT * FROM reingreso_r INNER JOIN pasos_r ON reingreso_r.id_reingreso=pasos_r.id_reingreso where idPaso_r=$pasoActual $carrconsul ";
+          $sql = "SELECT * FROM reingreso_r INNER JOIN pasos_r ON reingreso_r.id_reingreso=pasos_r.id_reingreso where idPaso_r=$pasoActual $carrconsul ";
         $result = mysqli_query($conexion,$sql);
       // $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
       //$active = $row['active'];
