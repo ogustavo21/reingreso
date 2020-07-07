@@ -1,13 +1,5 @@
-    <?php
-    include_once("../session.php");
-    @$user_check = $_SESSION['login_user'];
-    $conexion = mysqli_connect ("localhost","root", "", "admisiones_bd");
-    $conexion->set_charset('utf8');
-    $query = $conexion -> query("SELECT tipo FROM reingreso_r WHERE matricula=$user_check");
-    $tipo_usuario = mysqli_fetch_array($query);
-    $admin = array(0=>"admin","tipo"=>"admin");
-    ?>
-
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -16,26 +8,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Portafolio Docente | </title>
+    <title>Reincripciones | UNAV </title>
 
     <!-- Bootstrap core CSS -->
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="fonts/css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/animate.min.css" rel="stylesheet">
+    <link href="../fonts/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/animate.min.css" rel="stylesheet">
 
     <!-- Custom styling plus plugins -->
-    <link href="css/custom.css" rel="stylesheet">
-    <link href="css/icheck/flat/green.css" rel="stylesheet">
+    <link href="../css/custom.css" rel="stylesheet">
+    <link href="../css/icheck/flat/green.css" rel="stylesheet">
     <!-- editor -->
     <link href="http://netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
-    <link href="css/editor/external/google-code-prettify/prettify.css" rel="stylesheet">
-    <link href="css/editor/index.css" rel="stylesheet">
+    <link href="../css/editor/external/google-code-prettify/prettify.css" rel="stylesheet">
+    <link href="../css/editor/index.css" rel="stylesheet">
     <!-- select2 -->
-    <link href="css/select/select2.min.css" rel="stylesheet">
+    <link href="../css/select/select2.min.css" rel="stylesheet">
     <!-- switchery -->
-    <link rel="stylesheet" href="css/switchery/switchery.min.css" />
+    <link rel="stylesheet" href="../css/switchery/switchery.min.css" />
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>  
     
 
@@ -64,9 +56,18 @@
 
                     <div class="navbar nav_title" style="border: 0;" align="center">
 
-                        <a href="index.html" class="site_title"> <img src="eDocenteLogo.png" alt=""> </a>
+                        <a href="index.html" class="site_title"> <img src="../eDocenteLogo.png" alt=""> </a>
                     </div>
                     <div class="clearfix"></div>
+
+                        <?php
+    $nivel_dir="../"; 
+    include ($nivel_dir.'utils/conexion.php');
+    @$user_check = $_SESSION['login_user'];
+    $query = $conexion -> query("SELECT tipo FROM reingreso_r WHERE matricula=$user_check");
+    $tipo_usuario = mysqli_fetch_array($query);
+    $admin = array(0=>"admin","tipo"=>"admin");
+    ?>
 
 <!-- menu prile quick info -->
     <div class="profile">
@@ -85,6 +86,7 @@
 
                     <br />
      <!-- sidebar menu -->
+
                     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
 
                         <div class="menu_section">
@@ -92,11 +94,18 @@
                             <ul class="nav side-menu">
                                 <li><a href="index.php"><i class="fa fa-check-square-o"></i> Reingreso </a>
                                 </li>
-                               
+                                <li id="revision" style=""><a href="revisar_adeu.php"><i class="fa fa-bar-chart"></i> Revisión de adeudo </a>
+                                </li>
+                                <li id="revision" style=""><a href="revisar_admision.php"><i class="fa fa-bar-chart"></i> Revisión de correo </a>
+                                </li>
+                                <li id="revision" style=""><a href="revisar_candado.php"><i class="fa fa-bar-chart"></i> Revisión de candado </a>
+                                </li>
                                 <?php 
                                 if ($tipo_usuario==$admin) {
                                 ?>  
-                                    <li id="revision" style=""><a href="consola.php"><i class="fa fa-bar-chart"></i> Revisión</a>
+                                    <li id="revision" style=""><a href="revisar_adeu.php"><i class="fa fa-bar-chart"></i> Revisión de adeudo </a>
+                                    </li>  
+                                     <li id="reportes" style=""><a href="reportes.php"><i class="fa fa-bar-chart"></i> Reportes </a>
                                     </li>  
                                 <?php
                                 } else {
@@ -113,12 +122,15 @@
 
                     </div>
                     <!-- /sidebar menu -->
-                    </div>
+                    
+                    <!-- /menu footer buttons -->
+                </div>
             </div>
 
             <!-- top navigation -->
             <div class="top_nav">
-                <div class="nav_menu">
+
+                   <div class="nav_menu">
                     <nav class="" role="navigation">
                         <div class="nav toggle">
                             <a id="menu_toggle"><i class="fa fa-bars"></i></a>
@@ -139,12 +151,15 @@
                                     <li>
                                         <a href="javascript:;">Ayuda</a>
                                     </li>
-                                    <li><a href="outss.php"><i class="fa fa-sign-out pull-right"></i>Cerrar Sesión</a>
+                                    <li><a href="../outss.php"><i class="fa fa-sign-out pull-right"></i>Cerrar Sesión</a>
                                     </li>
                                 </ul>
                             </li>
+
+                            
+
                         </ul>
                     </nav>
                 </div>
-              
+
             </div>

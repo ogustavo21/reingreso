@@ -5,27 +5,45 @@ include("utils/conexion.php");
 
 session_start();
  if($_SERVER["REQUEST_METHOD"] == "POST") {
-      // username and password sent from form 
+       // username and password sent from form 
       $myusername = mysqli_real_escape_string($conexion,$_POST['matricula']);
       $mypassword = sha1(mysqli_real_escape_string($conexion,$_POST['password'])); 
+       
       
-      $sql = "SELECT matricula FROM reingreso_r WHERE matricula = '$myusername' and contrasena = '$mypassword'";
+      $sql = "SELECT * FROM reingreso_r WHERE matricula = '$myusername' and contrasena = '$mypassword'";
       $result = mysqli_query($conexion,$sql);
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-      //$active = $row['active'];
+      //$tipo = $row['tipo'];
       $count = mysqli_num_rows($result);
       
       if($count == 1) {
-         //session_register("myusername");
-         $_SESSION['login_user'] = $myusername;
+          $_SESSION['login_user'] =  $row['matricula'];
+          $_SESSION['tipo'] =  $row['tipo'];
          header("location: index.php");
+       
       }else {
-    echo'<script type="text/javascript">
-    alert("El usuario o contraseña es inválido");
-    </script>';
-        // $error = "El usuario o contraseña es inválido";
-      }
-   }
+                  $sql2 = "SELECT * FROM registro WHERE correo = '$myusername' and contrasena = '$mypassword'";
+                $result2 = mysqli_query($conexion,$sql2);
+                $row2 = mysqli_fetch_array($result2,MYSQLI_ASSOC);
+                //$tipo = $row['tipo'];
+                 $count2 = mysqli_num_rows($result2);
+                
+                if($count2 == 1) {
+                     $_SESSION['login_user'] =  $row2['correo'];
+                      $_SESSION['tipo'] =  $row2['tipo'];
+                     $_SESSION['id_carrera'] =  $row2['id_carrera'];
+                 header("location: adminpage/consola.php");
+                 
+                }else {
+
+                  echo'<script type="text/javascript">
+                  alert("El usuario o contraseña es inválido");
+                  </script>';
+                      // $error = "El usuario o contraseña es inválido";
+                }
+      }// tipo de ususario
+
+   }//request
 
 ?>
 <!DOCTYPE html>
