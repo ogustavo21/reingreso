@@ -1,11 +1,25 @@
 <?php
 // esto es el index
 include("session.php");
-//include("utils/conexion.php");
-
-
-
+include("utils/conexion.php");
 include("template/todo.php");
+$result= 4;
+$matr=$_SESSION['login_user'];
+$query = "SELECT idPaso_r FROM pasos_r INNER JOIN reingreso_r ON reingreso_r.id_reingreso=pasos_r.id_reingreso where reingreso_r.matricula='$matr'";
+$result =  mysqli_query($conexion,$query);
+$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+if ($row>=0) {
+    echo "<script> $(document).ready(function () {
+                        var paso = '<?php echo '$row'; ?>';
+                        // Smart Wizard 
+                        $('#wizard').smartWizard('enableStep', paso);
+
+                    });
+         </script>";
+}
+
+//  echo "$result";
+
 ?>
 
 
@@ -107,47 +121,48 @@ include("template/todo.php");
                                             </li>
                                         </ul>
                                         <div id="step-1" class="form-group">
-                                           <h1 class="StepTitle">Solicita revisión de adeudo</h1>
+                                           <h1 class="StepTitle">Registro</h1>
 
                                             <p class="instruccion">
-                                            Para comenzar con tu proceso de reinscripción solicita la revisión de adeudos a Finanzas.
+                                            Ya comenzó su proceso de reinscripción, para continuar presione "Siguiente".
                                            </p>
-                                           <form action="solicit_adeu.php" method="POST" enctype="multipart/form-data">                               
-                                            <input class="btn btn-default btn-sm" type="submit" name="Guardar" value="Enviar solicitud">
-                                            </form>
+                                          
                                            
                                         </div>
                                         <div id="step-2">
-                                            <h1 class="StepTitle">Revisión de Adeudo</h1>
+                                            <h1 class="StepTitle">Solicita revisión de adeudo</h1>
                                             <p class="instruccion">
                                                 Finanzas revisará su cuenta, espere a que se lleve acabo el proceso.     
                                             </p>
+                                            <form action="solicit_adeu.php" method="POST" enctype="multipart/form-data">                               
+                                            <input class="btn btn-default btn-sm" type="submit" name="Guardar" value="Enviar solicitud">
+                                            </form>
                                         </div>
                                         <div id="step-3">
-                                            <h1 class="StepTitle">Revisión de Teléfono y Correo</h1>
+                                            <h1 class="StepTitle">Revisión de Adeudo</h1>
                                             <p class="instruccion">
                                                 Admisiones verificará tus datos en el sistema, espere a que se lleve a cabo el proceso.     
                                             </p>
                                         </div>
 
                                         <div id="step-4">
-                                            <h1 class="StepTitle">Revisión de candado</h1>
+                                            <h1 class="StepTitle">Revisión de Teléfono y Correo</h1>
                                         </div>
 
                                         <div id="step-5">
-                                            <h1 class="StepTitle">Carga académica</h1>
+                                            <h1 class="StepTitle">Revisión de candado</h1>
                                         </div>
                                         <div id="step-6">
-                                            <h1 class="StepTitle">Cálculo de cobro</h1>
+                                            <h1 class="StepTitle">Carga académica</h1>
                                         </div>
                                         <div id="step-7">
-                                            <h1 class="StepTitle">Enviar comprobante</h1>
+                                            <h1 class="StepTitle">Cálculo de cobro</h1>
                                             <form action="" method="POST" enctype="multipart/form-data">              
                                             <input class="form-control" type="file" name="Guardar" value="Enviar">
                                             </form>
                                         </div>
                                         <div id="step-8">
-                                            <h1 class="StepTitle">Bienvenid@</h1>
+                                            <h1 class="StepTitle">Enviar comprobante</h1>
                                             
                                         </div>
                                     </div>
