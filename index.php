@@ -7,18 +7,18 @@ $result= 4;
 $matr=$_SESSION['login_user'];
 $query = "SELECT idPaso_r FROM pasos_r INNER JOIN reingreso_r ON reingreso_r.id_reingreso=pasos_r.id_reingreso where reingreso_r.matricula='$matr'";
 $result =  mysqli_query($conexion,$query);
-$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-if ($row>=0) {
+$row = mysqli_fetch_array($result);
+$paso = $row[0];
+if ($result!="0") {
     echo "<script> $(document).ready(function () {
-                        var paso = '<?php echo '$row'; ?>';
+                        var paso = '<?php echo '$paso'; ?>';
                         // Smart Wizard 
                         $('#wizard').smartWizard('enableStep', paso);
 
                     });
          </script>";
 }
-
-//  echo "$result";
+// echo '$result';
 
 ?>
 
