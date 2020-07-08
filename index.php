@@ -7,9 +7,9 @@ $result= 4;
 $matr=$_SESSION['login_user'];
 $query = "SELECT idPaso_r FROM pasos_r INNER JOIN reingreso_r ON reingreso_r.id_reingreso=pasos_r.id_reingreso where reingreso_r.matricula='$matr'";
 $result =  mysqli_query($conexion,$query);
-$row = mysqli_fetch_array($result);
+$row = mysqli_fetch_row($result);
 $paso = $row[0];
-if ($result!="0") {
+if ($paso!="0") {
     echo "<script> $(document).ready(function () {
                         var paso = '<?php echo '$paso'; ?>';
                         // Smart Wizard 
@@ -18,7 +18,7 @@ if ($result!="0") {
                     });
          </script>";
 }
-// echo '$result';
+//echo "$paso";
 
 ?>
 
