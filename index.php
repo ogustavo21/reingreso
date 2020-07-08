@@ -10,13 +10,23 @@ $result =  mysqli_query($conexion,$query);
 $row = mysqli_fetch_row($result);
 $paso = $row[0];
 if ($paso!="0") {
-    echo "<script> $(document).ready(function () {
-                        var paso = '<?php echo '$paso'; ?>';
-                        // Smart Wizard 
-                        $('#wizard').smartWizard('enableStep', paso);
-
-                    });
+    echo "<script>
+            $(document).ready(function () {
+                var paso = '<?php echo '$paso'; ?>';
+                // Smart Wizard 
+                $('#wizard').smartWizard('goToStep', paso);
+                });
+          </script>";
+    for ($i=0; $i < $paso ; $i++) { 
+        echo "<script>
+                $(document).ready(function () {
+                var paso = '<?php echo '$paso'; ?>';
+                // Smart Wizard 
+                $('#wizard').smartWizard('enableStep', paso);
+                });
          </script>";
+    }
+    
 }
 //echo "$paso";
 
@@ -51,74 +61,74 @@ if ($paso!="0") {
 
                                     <div id="wizard" class="form_wizard wizard_horizontal">
                                         <ul class="wizard_steps">
-                                            <li>
-                                                <a href="#step-1">
-                                                    <span class="step_no">1</span>
-                                                    <span class="step_descr">
-                                            Paso 1<br />
-                                        </span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#step-2">
-                                                    <span class="step_no">2</span>
-                                                    <span class="step_descr">
-                                            Paso 2<br />
-                                        </span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#step-3">
-                                                    <span class="step_no">3</span>
-                                                    <span class="step_descr">
-                                            Paso 3<br />
-                                        </span>
-                                                </a>
-                                            </li>
+                                                <li>
+                                                    <a href="#step-1">
+                                                        <span class="step_no">1</span>
+                                                        <span class="step_descr">
+                                                Paso 1<br />
+                                            </span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#step-2">
+                                                        <span class="step_no">2</span>
+                                                        <span class="step_descr">
+                                                Paso 2<br />
+                                            </span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#step-3">
+                                                        <span class="step_no">3</span>
+                                                        <span class="step_descr">
+                                                Paso 3<br />
+                                            </span>
+                                                    </a>
+                                                </li>
 
-                                            <li>
-                                                <a href="#step-4">
-                                                    <span class="step_no">4</span>
-                                                    <span class="step_descr">
-                                            Paso 4<br/>
-                                        </span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#step-5">
-                                                    <span class="step_no">5</span>
-                                                    <span class="step_descr">
-                                            Paso 5<br/>
-                                        </span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#step-6">
-                                                    <span class="step_no">6</span>
-                                                    <span class="step_descr">
-                                            Paso 6<br/>
-                                       
-                                        </span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#step-7">
-                                                    <span class="step_no">7</span>
-                                                    <span class="step_descr">
-                                            Paso 7<br/>
-                                            
-                                        </span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#step-8">
-                                                    <span class="step_no">8</span>
-                                                    <span class="step_descr">
-                                            Paso 8<br/>
+                                                <li>
+                                                    <a href="#step-4">
+                                                        <span class="step_no">4</span>
+                                                        <span class="step_descr">
+                                                Paso 4<br/>
+                                            </span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#step-5">
+                                                        <span class="step_no">5</span>
+                                                        <span class="step_descr">
+                                                Paso 5<br/>
+                                            </span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#step-6">
+                                                        <span class="step_no">6</span>
+                                                        <span class="step_descr">
+                                                Paso 6<br/>
                                            
-                                        </span>
-                                                </a>
-                                            </li>
+                                            </span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#step-7">
+                                                        <span class="step_no">7</span>
+                                                        <span class="step_descr">
+                                                Paso 7<br/>
+                                                
+                                            </span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#step-8">
+                                                        <span class="step_no">8</span>
+                                                        <span class="step_descr">
+                                                Paso 8<br/>
+                                               
+                                            </span>
+                                                    </a>
+                                                </li>
                                         </ul>
                                         <div id="step-1" class="form-group">
                                            <h1 class="StepTitle">Registro</h1>
