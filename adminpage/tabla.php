@@ -1,4 +1,6 @@
 <?php  
+session_start();
+//$user_check = $_SESSION['login_user'];
 include("../utils/conexion.php");
 $mboton="";
 $nombre="";
@@ -9,8 +11,10 @@ $pasoguardar="";
                 //$query91 = "SELECT * from registro where id_registro='".$_SESSION['k_username']."' ";    
                // $result1 = $conexion->query($query91);
                 //$rowTotal = $result1->fetch_assoc();
-                $tipo = "Finanzas";//$rowTotal["tipo"];
-                $carrera = 0;//$_SESSION['carrera'];
+
+                 $matricula= $_SESSION['login_user'];
+                 $tipo = $_SESSION['tipo'];//$rowTotal["tipo"];
+                 $carrera =$_SESSION['id_carrera'];//$_SESSION['carrera'];
                 
                 ////elegir la consulta con carreras
                 if ($carrera>0){
@@ -83,17 +87,18 @@ $pasoguardar="";
                     }
                              
       // lista por carrera y pasos
-          $sql = "SELECT * FROM reingreso_r INNER JOIN pasos_r ON reingreso_r.id_reingreso=pasos_r.id_reingreso where idPaso_r=$pasoActual $carrconsul ";
+           $sql = "SELECT * FROM reingreso_r INNER JOIN pasos_r ON reingreso_r.id_reingreso=pasos_r.id_reingreso where idPaso_r=$pasoActual $carrconsul ";
         $result = mysqli_query($conexion,$sql);
       // $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
       //$active = $row['active'];
       //$count = mysqli_num_rows($result);
+
         if ($tipo=="Finanzas") {
          ?>
         
 
          
-         <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                                      <div class="" role="tabpanel" data-example-id="togglable-tabs">
                                           <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
                                                 <li role="presentation" class="<?php echo $activo1;?>"><a onclick="refresh('465465465')" id="home-tab" role="tab" data-toggle="tab" aria-expanded="false">Convenio</a>
                                                 </li>
@@ -102,7 +107,7 @@ $pasoguardar="";
                                                <li role="presentation" class="<?php echo $activo3;?>" ><a onclick="refresh('89756687654')" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="true">Verifica pago</a>
                                                 </li>
                                             </ul>
-         </div>
+                                      </div>
          <?php }?>
                                     <!-- start project list -->
                                     <table class=" table table-striped responsive-utilities jambo_table" id="tabla">
@@ -120,7 +125,9 @@ $pasoguardar="";
                                         <?php
             while($key=$result->fetch_array(MYSQLI_ASSOC)) {
         $id=$key['id_reingreso'];
+        $matricula=$key['matricula'];
             # code...
+         $porcentaje= number_format(($key['idPaso_r']*100)/9, 0, '.', '');
         ?>
                                         <tbody>
                                             
@@ -138,23 +145,53 @@ $pasoguardar="";
                                                     <a><?php echo $key['matricula'];?></a>
                                                 </td>
                                                 <td class="project_progress">
-                                                    <div class="progress progress_sm">
-                                                        <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="77" aria-valuenow="74" style="width: 77%;"></div>
+                                                     <div class="progress progress_sm">
+
+                                                      <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="<?php echo  $porcentaje;?>" aria-valuenow="74" style="width: <?php echo  $porcentaje; ?>%;"></div>
                                                     </div>
-                                                    <small>77% Complete</small>
+                                                    <small><?php echo  $porcentaje;?>% Complete</small>
                                                 </td>
                                                 <td>
                                                     <button type="button" onclick="myFunction()" class="btn btn-success btn-xs"  ><?php echo $mboton;?></button>
                                                 </td>
                                                 <td>
-                                                    <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
+                                                      <button type="button" class="btn btn-info btn-xs edit" onclick="matricula(<?php echo $key['matricula']; ?>)" data-toggle="modal" data-target=".bs-example-modal-lg">Info</button>
+                                                           
                                                 </td>
                                             </tr>
                                         </tbody>
                                         <?php
                                         }
                                         ?>
+
+                                  
                                     </table>
+
+                                            <!-- modals -->
+                                                        <div class="modal fade bs-example-modal-lg" id="edit" tabindex="-1" role="dialog" aria-hidden="true">
+                                                            <div class="modal-dialog modal-lg">
+                                                                <div class="modal-content">
+
+                                                                    <div class="modal-header">
+                                                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                                                                        </button>
+                                                                        <h4 class="modal-title" id="myModalLabel"> Datos Académicos</h4>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <h4></h4>
+                                                                        <div id="datos"></div>
+                                                                       
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                        
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div> 
+                                                        <!-- modals -->
+
                                     <!-- end project list -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -189,7 +226,20 @@ function refresh(dat){
 
 }
 
+//manda informacion de la matricula
+function matricula(matricula) {
+     var matriculax=matricula;
 
+$.post("info.php",
+    {
+      matricula:matriculax,
+    },
+    function(data,status){
+    // $('#matriculas').val(data);
+      $("#datos").html(data); 
+    });
+
+}
 
 
 </script>
