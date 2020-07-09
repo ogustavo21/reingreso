@@ -3,35 +3,31 @@
 include("session.php");
 include("utils/conexion.php");
 include("template/todo.php");
-$result= 4;
+
 $matr=$_SESSION['login_user'];
 $query = "SELECT idPaso_r FROM pasos_r INNER JOIN reingreso_r ON reingreso_r.id_reingreso=pasos_r.id_reingreso where reingreso_r.matricula='$matr'";
 $result =  mysqli_query($conexion,$query);
 $row = mysqli_fetch_row($result);
 $paso = $row[0];
-if ($paso!="0") {
-    echo "<script>
-            $(document).ready(function () {
-                var paso = '<?php echo '$paso'; ?>';
+if ($paso!=0) {
+    echo "<script>";
+    echo "$(document).ready(function () {
+                var paso =  $paso;
                 // Smart Wizard 
                 $('#wizard').smartWizard('goToStep', paso);
-                });
-          </script>";
-    for ($i=0; $i < $paso ; $i++) { 
-        echo "<script>
-                $(document).ready(function () {
-                var paso = '<?php echo '$paso'; ?>';
+                });";
+    echo "</script>";
+    for ($i=0; $i < $paso ; $i++) {
+     echo "<script>";
+    echo "$(document).ready(function () {
+                var paso =  $i;
                 // Smart Wizard 
                 $('#wizard').smartWizard('enableStep', paso);
-                });
-         </script>";
-    }
-    
+                });";
+    echo "</script>";     
+    }    
 }
-//echo "$paso";
-
 ?>
-
 
             <!-- page content -->
             <div class="right_col" role="main">
@@ -46,7 +42,7 @@ if ($paso!="0") {
                         </div>
                     </div>
                     <div class="clearfix"></div>
-            <div class="row">
+            <div class="row" id="pasos">
 
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel" style="height:600px;">
