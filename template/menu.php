@@ -47,7 +47,7 @@
                                 
                                 if ($tipo_usuario=="Estudiante") {
                                 ?>  
-                                    <li id="reportes" style=""><a href="/reingreso/index.php"><i class="fa fa-bar-chart"></i> Reincripcion </a>
+                                    <li id="reportes" style=""><a href="/reingreso/index.php"><i class="fa fa-bar-chart"></i> Reinscripcion </a>
                                     </li>  
      
                                 <?php
