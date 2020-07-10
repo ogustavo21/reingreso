@@ -1,17 +1,7 @@
 <?php
-// esto es el index
+
 include("../session.php");
 include("../utils/conexion.php");
-
-$user_check = $_SESSION['login_user'];
-//session_periodo
-/*$mysqli = new mysqli("localhost", "root", "", "portfolio");
-    mysqli_set_charset($mysqli,"utf8");
-    if ($mysqli->connect_errno) {
-    printf("Falló la conexión: %s\n", $mysqli->connect_error);
-    exit();}*/
-
-
 include("../template/todo.php");
 ?>
 
@@ -24,7 +14,12 @@ include("../template/todo.php");
                     <div class="page-title">
                         <div class="title_left">
                             
-                            <h3>Nombre del del departamento <small>Carrera</small></h3>
+                            <h3><?php echo $_SESSION['tipo'] ?> <small><?php if( $_SESSION['id_carrera']!="") {
+                //consulta para obetener tipo y carrera
+                $query91 = "SELECT * from carrera where id_carrera='".$_SESSION['id_carrera']."' ";    
+                $result1 = $conexion->query($query91);
+                $rowTotal = $result1->fetch_assoc();
+                 echo "  ".$rowTotal["carrera"];} ?></small></h3>
                         </div>
 
                         <div class="title_right">

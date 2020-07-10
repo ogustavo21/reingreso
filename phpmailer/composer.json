@@ -1,0 +1,13 @@
+{
+    "name": "financiero/phpmailer",
+    "description": "prueba de envio",
+    "authors": [
+        {
+            "name": "Gustavo Ordoñez Nuñez",
+            "email": "ogustavo@unav.edu.mx"
+        }
+    ],
+    "require": {
+        "phpmailer/phpmailer": "^6.1"
+    }
+}
