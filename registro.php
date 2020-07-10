@@ -29,7 +29,7 @@
 		{
 		mysqli_close ($conexion);
 		header("Location:login.php");
-        $query1="INSERT INTO pasos_r (id_pasos, id_reingreso,idPaso_r,estatus) VALUES ('','',2,1)";
+        $query1="INSERT INTO pasos_r (id_pasos, id_reingreso,idPaso_r,estatus) VALUES ('','',1,1)";
         $result = $conexion->query($query1);
 		} else {
          echo'<script type="text/javascript">

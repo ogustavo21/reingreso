@@ -12,18 +12,18 @@ $paso = $row[0];
 if ($paso!=0) {
     echo "<script>";
     echo "$(document).ready(function () {
-                var paso =  $paso;
-                // Smart Wizard 
-                $('#wizard').smartWizard('goToStep', paso);
-                });";
+            var paso =  $paso;
+            // Smart Wizard 
+            $('#wizard').smartWizard('goToStep', paso);
+            });";
     echo "</script>";
     for ($i=0; $i < $paso ; $i++) {
      echo "<script>";
     echo "$(document).ready(function () {
-                var paso =  $i;
-                // Smart Wizard 
-                $('#wizard').smartWizard('enableStep', paso);
-                });";
+            var paso =  $i;
+            // Smart Wizard 
+            $('#wizard').smartWizard('enableStep', paso);
+            });";
     echo "</script>";     
     }    
 }
