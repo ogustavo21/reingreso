@@ -15,7 +15,7 @@
 
                     <div class="navbar nav_title" style="border: 0;" align="center">
 
-                        <a href="/reingreso/index.php" class="site_title"> <img src="/reingreso/eDocenteLogo.png" alt=""> </a>
+                        <a href="#" class="site_title"> <img src="/reingreso/template/logoadmisiones.png" alt=""> </a>
                     </div>
                     <div class="clearfix"></div>
 
@@ -55,6 +55,8 @@
                                 ?>
                                  <li id="revision" style=""><a href="/reingreso/adminpage/consola.php"><i class="fa fa-bar-chart"></i> Panel de control </a>
                                     </li>  
+                                    <li id="revision" style=""><a href="/reingreso/adminpage/listado.php"><i class="fa fa-bar-chart"></i> Listado </a>
+                                    </li> 
                                     
                                <?php  } 
                                ?>
