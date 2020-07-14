@@ -190,18 +190,35 @@ if ($paso>=2) {
                                             $obj = json_decode($json);
 
                                             foreach ($obj as $key => $value) {
-                                                echo $nombreAcademica=$obj[$key]->NOMBRE_CANDADO;
+                                                $nombreAcademica=$obj[$key]->NOMBRE_CANDADO;
+                                                $nombreTelefono=$obj[$key]->TELEFONO;
                                                 echo "<br>";
+
+                                                if ($nombreAcademica!="") {  
+                                                $nombreAcademica=$obj[$key]->NOMBRE_CANDADO;
+                                                $nombreTelefono=$obj[$key]->TELEFONO; 
+                                                }elseif ($nombreAcademica==""){
+                                                $nombreAcademica="No tiene candados";
+                                                $nombreTelefono="--"; 
+                                                }    
                                             }
                                             ?>
                                             <table id="example" class="table table-striped responsive-utilities jambo_table">
+                                                <thead>
+                                                    <tr class="headings">
+                                                        <th>Candado</th>
+                                                        <th>Teléfono </th> 
+                                                    </tr>
+                                                </thead>
                                                 <tr>
-                                                        <td><?php if ($nombreAcademica!="") {
+                                                        <td><?php 
                                                             echo $nombreAcademica;
-                                                        }else{
-                                                            echo "No hay candados";
-                                                        }
                                                          ?></td>
+                                                        <td>
+                                                         <?php 
+                                                            echo $nombreTelefono;
+                                                        ?>  
+                                                        </td> 
                                                     </tr>
                                             </table>
                                             <form action="solicit_adeu.php" method="POST" enctype="multipart/form-data">                               
@@ -331,7 +348,7 @@ if ($paso>=2) {
                                             <p class="instruccion">
                                                 Al realizar el pago envíe su comprobante para que se verifique su pago.     
                                             </p>
-                                            <form action="guardar.php" method="POST" accept-charset="utf-8">
+                                            <form action="guardar.php" method="POST" accept-charset="utf-8" enctype="multipart/form-data">
                                                 <input type="file" id="comprobante" name="comprobante">
                                                 <label for="comprobante">Comprobante</label>
                                                 <input type="submit"> 
