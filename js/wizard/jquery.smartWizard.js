@@ -283,6 +283,12 @@ function SmartWizard(target, options) {
         }
     };
 
+    var _deshabilitar = function($this){
+            if (2 <= $this.curStepIdx) {
+                $($this.buttons).addClass("buttonDisabled");
+            } 
+    };
+
     var _adjustButton = function($this) {
         if (! $this.options.cycleSteps){
             if (0 >= $this.curStepIdx) {
@@ -315,6 +321,11 @@ function SmartWizard(target, options) {
     /*
      * Public methods
      */
+    SmartWizard.prototype.deshabilitar = function(){
+        $($this.buttons.next).addClass("buttonDisabled");
+        $this.options.hideButtonsOnDisabled
+        _deshabilitar(this);
+    };
 
     SmartWizard.prototype.goForward = function(){
         var nextStepIdx = this.curStepIdx + 1;
