@@ -283,9 +283,9 @@ function SmartWizard(target, options) {
         }
     };
 
-    var _deshabilitar = function($this){
-            if (2 <= $this.curStepIdx) {
-                $($this.buttons).addClass("buttonDisabled");
+    var _deshabilitar = function($this, curStep){
+            if ($this.curStepIdx >=2) {
+                $($this.buttons.next).addClass("buttonDisabled");
             } 
     };
 
@@ -321,12 +321,17 @@ function SmartWizard(target, options) {
     /*
      * Public methods
      */
-    SmartWizard.prototype.deshabilitar = function(){
-         $(this.buttons.next).addClass("buttonDisabled");
+     SmartWizard.prototype.disableNext = function (disabled) {
+        // Controll status of finish button dynamically
+        // just call this with status you want
+        this.options.disableNextButton = disabled;
+
+                $(this.buttons.next).addClass("buttonDisabled");
                 if (this.options.hideButtonsOnDisabled) {
                     $(this.buttons.next).hide();
                 }
-    };
+        return this.options.disableNextButton;
+    }
 
     SmartWizard.prototype.goForward = function(){
         var nextStepIdx = this.curStepIdx + 1;
@@ -480,12 +485,13 @@ function SmartWizard(target, options) {
         selected: 0,  // Selected Step, 0 = first step
         keyNavigation: true, // Enable/Disable key navigation(left and right keys are used if enabled)
         enableAllSteps: false,
-        transitionEffect: 'fade', // Effect on navigation, none/fade/slide/slideleft
+        transitionEffect: 'slide', // Effect on navigation, none/fade/slide/slideleft
         contentURL:null, // content url, Enables Ajax content loading
         contentCache:true, // cache step contents, if false content is fetched always from ajax url
         cycleSteps: false, // cycle step navigation
         enableFinishButton: false, // make finish button enabled always
-        hideButtonsOnDisabled: false, // when the previous/next/finish buttons are disabled, hide them instead?
+        disableNextButton: false,
+        hideButtonsOnDisabled: true, // when the previous/next/finish buttons are disabled, hide them instead?
         errorSteps:[],    // Array Steps with errors
         labelNext:'Next',
         labelPrevious:'Previous',

@@ -28,17 +28,17 @@ if ($paso!=0) {
     } 
 }
 
-//for ($a=0; $a>=$paso ; $a++ ) {
-    //if ($paso>=2) {
+
     echo "<script>";
-    echo "$(document).ready(function () {
-            $('#wizard').smartWizard('deshabilitar');
-            });";
+    echo "do{
+         $(document).ready(function () {
+         var stepIndex = $('#smartwizard').smartWizard('getStepIndex');
+         $('#wizard').smartWizard('disableNext', true);
+         });
+         }while($stepIndex=<$paso);";
     echo "</script>";
+                                                                 
     //}
-                                                                    
-    //}
-    
 ?>
 
             <!-- page content -->
@@ -364,7 +364,7 @@ if ($paso!=0) {
                                         <div id="step-9">
                                             <h1 class="StepTitle">Bienvenido</h1>
                                             <p class="instruccion">
-                                            Completó su proceso de reinscripción.
+                                            Ha completado su proceso de reinscripción. Le damos la bienvenida y esperamos que este semestre sea de gran bendición.
                                             </p>
                                         </div>
                                         <!-- /PASO 9 -->
