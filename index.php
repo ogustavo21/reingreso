@@ -17,25 +17,28 @@ if ($paso!=0) {
             $('#wizard').smartWizard('goToStep', paso);
             });";
     echo "</script>";
-    for ($i=0; $i < $paso ; $i++) {
+    for ($i=0; $i <= $paso ; $i++) {
     echo "<script>";
     echo "$(document).ready(function () {
             var paso =  $i;
             // Smart Wizard 
             $('#wizard').smartWizard('enableStep', paso);
             });";
-    echo "</script>";     
-    }    
+    echo "</script>"; 
+    } 
 }
 
-if ($paso>=2) {
+//for ($a=0; $a>=$paso ; $a++ ) {
+    //if ($paso>=2) {
     echo "<script>";
     echo "$(document).ready(function () {
             $('#wizard').smartWizard('deshabilitar');
             });";
     echo "</script>";
-}
-
+    //}
+                                                                    
+    //}
+    
 ?>
 
             <!-- page content -->
@@ -184,25 +187,7 @@ if ($paso>=2) {
                                             <p class="instruccion">
                                                 Para que finanzas revise su convenio solicite la revisión de tu cuenta. Los candados que tiene en este momento son:     
                                             </p>
-                                            <?php
-                                            $url = "http://189.194.95.69:3000/candados/".$matr;
-                                            $json = file_get_contents($url);
-                                            $obj = json_decode($json);
-
-                                            foreach ($obj as $key => $value) {
-                                                $nombreAcademica=$obj[$key]->NOMBRE_CANDADO;
-                                                $nombreTelefono=$obj[$key]->TELEFONO;
-                                                echo "<br>";
-
-                                                if ($nombreAcademica!="") {  
-                                                $nombreAcademica=$obj[$key]->NOMBRE_CANDADO;
-                                                $nombreTelefono=$obj[$key]->TELEFONO; 
-                                                }elseif ($nombreAcademica==""){
-                                                $nombreAcademica="No tiene candados";
-                                                $nombreTelefono="--"; 
-                                                }    
-                                            }
-                                            ?>
+                                            
                                             <table id="example" class="table table-striped responsive-utilities jambo_table">
                                                 <thead>
                                                     <tr class="headings">
@@ -210,18 +195,35 @@ if ($paso>=2) {
                                                         <th>Teléfono </th> 
                                                     </tr>
                                                 </thead>
-                                                <tr>
-                                                        <td><?php 
-                                                            echo $nombreAcademica;
-                                                         ?></td>
-                                                        <td>
-                                                         <?php 
-                                                            echo $nombreTelefono;
-                                                        ?>  
-                                                        </td> 
-                                                    </tr>
+
+                                                <tbody>
+                                                    <?php
+                                            $url = "http://189.194.95.69:3000/candados/".$matr;
+                                            $json = file_get_contents($url);
+                                            $obj = json_decode($json);
+
+                                            foreach ($obj as $key => $value) {
+                                                $candado=$obj[$key]->NOMBRE_CANDADO;
+                                                $tel=$obj[$key]->TELEFONO;
+                                                echo "<br>";
+
+                                                if ($candado==null) {  
+                                                echo "<tr>";
+                                                echo "<td>No tiene candados</td>";
+                                                echo "<td>--</td>";
+                                                echo "</tr>";
+                                                }else{
+                                                echo "<tr>";
+                                                echo "<td>".$candado."</td>";
+                                                echo "<td>".$tel."</td>";
+                                                echo "</tr>"; 
+                                                }    
+                                            }
+                                            ?>
+                                                </tbody>
+                                                        
                                             </table>
-                                            <form action="solicit_adeu.php" method="POST" enctype="multipart/form-data">                               
+                                            <form action="envia_solicitud.php" method="POST" enctype="multipart/form-data">                               
                                             <input class="btn btn-default btn-sm" type="submit" name="Guardar" value="Enviar solicitud">
                                             </form>
                                         </div>
@@ -368,6 +370,9 @@ if ($paso>=2) {
                                         <!-- /PASO 9 -->
                                     </div>
                                     <!-- End SmartWizard Content -->    
+                                    <?php
+                                    
+                                    ?>
             </div>
         </div>
         <!-- /page content -->

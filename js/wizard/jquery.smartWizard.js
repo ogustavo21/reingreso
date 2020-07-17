@@ -322,9 +322,10 @@ function SmartWizard(target, options) {
      * Public methods
      */
     SmartWizard.prototype.deshabilitar = function(){
-        $($this.buttons.next).addClass("buttonDisabled");
-        $this.options.hideButtonsOnDisabled
-        _deshabilitar(this);
+         $(this.buttons.next).addClass("buttonDisabled");
+                if (this.options.hideButtonsOnDisabled) {
+                    $(this.buttons.next).hide();
+                }
     };
 
     SmartWizard.prototype.goForward = function(){
