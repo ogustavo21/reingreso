@@ -10,7 +10,7 @@ session_start();
       $mypassword = sha1(mysqli_real_escape_string($conexion,$_POST['password'])); 
        
       
-      $sql = "SELECT * FROM reingreso_r WHERE matricula = '$myusername' and contrasena = '$mypassword'";
+      $sql = "SELECT reingreso_r.matricula, reingreso_r.tipo, reingreso_r.id_reingreso FROM reingreso_r, pasos_r WHERE reingreso_r.id_reingreso=pasos_r.id_reingreso and matricula = '$myusername' and contrasena = '$mypassword'";
       $result = mysqli_query($conexion,$sql);
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
       //$tipo = $row['tipo'];
@@ -19,6 +19,7 @@ session_start();
       if($count == 1) {
           $_SESSION['login_user'] =  $row['matricula'];
           $_SESSION['tipo'] =  $row['tipo'];
+          $_SESSION['id_reingreso'] =  $row2['id_reingreso'];
          header("location: index.php");
        
       }else {
@@ -30,7 +31,8 @@ session_start();
                 
                 if($count2 == 1) {
                      $_SESSION['login_user'] =  $row2['correo'];
-                      $_SESSION['tipo'] =  $row2['tipo'];
+                    
+                     $_SESSION['tipo'] =  $row2['tipo'];
                      $_SESSION['id_carrera'] =  $row2['id_carrera'];
                  header("location: adminpage/consola.php");
                  
