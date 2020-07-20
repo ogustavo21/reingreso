@@ -212,7 +212,7 @@ if ($paso!=0) {
                                                 </tbody>
                                                         
                                             </table>
-                                            <form action="envia_solicitud.php" method="POST" enctype="multipart/form-data">                               
+                                            <form action="envia_solicitud.php" method="POST">                               
                                             <input class="btn btn-default btn-sm" type="submit" name="Guardar" value="Enviar solicitud">
                                             </form>
                                         </div>
