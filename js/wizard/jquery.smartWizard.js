@@ -283,11 +283,6 @@ function SmartWizard(target, options) {
         }
     };
 
-    var _deshabilitar = function($this, curStep){
-            if ($this.curStepIdx >=2) {
-                $($this.buttons.next).addClass("buttonDisabled");
-            } 
-    };
 
     var _adjustButton = function($this) {
         if (! $this.options.cycleSteps){
@@ -313,6 +308,12 @@ function SmartWizard(target, options) {
                     $($this.buttons.next).show();
                 }
             }
+            if ($this.curStepIdx>=1) {
+                $($this.buttons.next).addClass("buttonDisabled");
+                if ($this.options.hideButtonsOnDisabled) {
+                    $($this.buttons.next).hide();
+                }    
+            }
         }
         // Finish Button
         $this.enableFinish($this.options.enableFinishButton);
@@ -321,17 +322,6 @@ function SmartWizard(target, options) {
     /*
      * Public methods
      */
-     SmartWizard.prototype.disableNext = function (disabled) {
-        // Controll status of finish button dynamically
-        // just call this with status you want
-        this.options.disableNextButton = disabled;
-
-                $(this.buttons.next).addClass("buttonDisabled");
-                if (this.options.hideButtonsOnDisabled) {
-                    $(this.buttons.next).hide();
-                }
-        return this.options.disableNextButton;
-    }
 
     SmartWizard.prototype.goForward = function(){
         var nextStepIdx = this.curStepIdx + 1;
@@ -491,7 +481,7 @@ function SmartWizard(target, options) {
         cycleSteps: false, // cycle step navigation
         enableFinishButton: false, // make finish button enabled always
         disableNextButton: false,
-        hideButtonsOnDisabled: true, // when the previous/next/finish buttons are disabled, hide them instead?
+        hideButtonsOnDisabled: false, // when the previous/next/finish buttons are disabled, hide them instead?
         errorSteps:[],    // Array Steps with errors
         labelNext:'Next',
         labelPrevious:'Previous',

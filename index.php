@@ -26,19 +26,8 @@ if ($paso!=0) {
             });";
     echo "</script>"; 
     } 
-}
-
-
-    echo "<script>";
-    echo "do{
-         $(document).ready(function () {
-         var stepIndex = $('#smartwizard').smartWizard('getStepIndex');
-         $('#wizard').smartWizard('disableNext', true);
-         });
-         }while($stepIndex=<$paso);";
-    echo "</script>";
-                                                                 
-    //}
+}                                                         
+    
 ?>
 
             <!-- page content -->
@@ -57,7 +46,7 @@ if ($paso!=0) {
             <div class="row" id="pasos">
 
                         <div class="col-md-12 col-sm-12 col-xs-12">
-                            <div class="x_panel" style="height:780px;">
+                            <div class="x_panel" style="height:auto;">
                                 <div class="x_title  ">
                                     
                                     <div class="clearfix"></div>
@@ -370,9 +359,6 @@ if ($paso!=0) {
                                         <!-- /PASO 9 -->
                                     </div>
                                     <!-- End SmartWizard Content -->    
-                                    <?php
-                                    
-                                    ?>
             </div>
         </div>
         <!-- /page content -->
