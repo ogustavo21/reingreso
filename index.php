@@ -5,11 +5,10 @@ include("utils/conexion.php");
 include("template/todo.php");
 
 $matr=$_SESSION['login_user'];
-$query = "SELECT idPaso_r, reingreso_r.id_reingreso FROM pasos_r INNER JOIN reingreso_r ON reingreso_r.id_reingreso=pasos_r.id_reingreso where reingreso_r.matricula='$matr'";
+$query = "SELECT idPaso_r FROM pasos_r INNER JOIN reingreso_r ON reingreso_r.id_reingreso=pasos_r.id_reingreso where reingreso_r.matricula='$matr'";
 $result =  mysqli_query($conexion,$query);
 $row = mysqli_fetch_row($result);
-if ($row[0]==1) $paso = $row[0]; else {$paso = $row[0]+1;}
-
+$paso = $row[0];
 if ($paso!=0) {
     echo "<script>";
     echo "$(document).ready(function () {
@@ -27,19 +26,8 @@ if ($paso!=0) {
             });";
     echo "</script>"; 
     } 
-}
-
-//for ($a=0; $a>=$paso ; $a++ ) {
-    //if ($paso>=2) {
-    echo "<script>";
-    echo "$(document).ready(function () {
-            $('#wizard').smartWizard('deshabilitar');
-            });";
-    echo "</script>";
-    //}
-                                                                    
-    //}
-   $id_reingreso=$row[1]; 
+}                                                         
+    
 ?>
 
             <!-- page content -->
@@ -58,7 +46,7 @@ if ($paso!=0) {
             <div class="row" id="pasos">
 
                         <div class="col-md-12 col-sm-12 col-xs-12">
-                            <div class="x_panel" style="height:780px;">
+                            <div class="x_panel" style="height:auto;">
                                 <div class="x_title  ">
                                     
                                     <div class="clearfix"></div>
@@ -224,8 +212,7 @@ if ($paso!=0) {
                                                 </tbody>
                                                         
                                             </table>
-                                            <form action="envia_solicitud.php" method="POST" enctype="multipart/form-data"> 
-                                             <input type="hidden" name="matr" value="<?php echo $matr; ?>">                              
+                                            <form action="envia_solicitud.php" method="POST">                               
                                             <input class="btn btn-default btn-sm" type="submit" name="Guardar" value="Enviar solicitud">
                                             </form>
                                         </div>
@@ -352,67 +339,12 @@ if ($paso!=0) {
                                             <p class="instruccion">
                                                 Al realizar el pago envíe su comprobante para que se verifique su pago.     
                                             </p>
-
-<form action="guardar.php" method="POST" name="formularioSubirPago" id="formularioSubirPago" enctype="multipart/form-data">
-
-        
-<!-- Formulario para subir los archivos -->
-    <?php
-        
-         $queryVA = "select * from archivos_r where id_reingreso = $id_reingreso and iddocu = 36 ";
-        $VA = $conexion->query($queryVA);
-        $numVA = $VA->num_rows;
-        
-
-        if ($numVA) {
-            while ($V = $VA->fetch_array()) {
-                    $nombreArchivo = $V['ruta'];
-                    $idArchivo = $V['id_archivos'];
-                }
-            if (isset($_GET['act'])) {
-                echo '<table align="center">
-                <tr>
-                    <td><input type="file" name="inputComprobante" id="archivos"></td><!-- Este es nuestro campo input File-->
-                </tr>
-                <input type="hidden" name="actualizar" value="actualizar">
-            </table>
-            <br><br>
-            <a href=""><button id="enviar" class="botonLoginPrincipal">Enviar comprobante!</button></a>
-    ';
-            } else {
-                echo '<h2>Usted ya ha subido un comprobante de pago:</h2>';
-                echo '<h2>Por favor espera a que el paso 9 este activada</h2>';
-                echo '
-                    <tr>
-                        <td><a target="_blank" href="files/'.$nombreArchivo.'">Comprobante de pago</a></td>
-                        <td><a onclick="return confirm(\'¿Está seguro de borrar el archivo?\')" href="borrar.php?idArchivo='.$idArchivo.'&compag=true"><img style="width: 30px;" src="images/x.png"></a></td>
-                    </tr>
-                    ';
-            }
-            
-        } else {
-    
-
-
-            echo '<div>  <input type="file" name="inputComprobante" id="archivos">
-                                                <label for="archivos">Adjuntar documento de pago </label>
-                                                <input type="submit"></div> ';
-
-
-        }
-    ?>   
-    </form>
-
-
-
-
-<!-- 
-                                            <form action="guardar.php" method="POST" accept-charset="utf-8" enctype="multipart/form-data" >
+                                            <form action="guardar.php" method="POST" accept-charset="utf-8" enctype="multipart/form-data">
                                                 <input type="file" id="comprobante" name="comprobante">
-                                                <label for="comprobante">Adjuntar documento de pago </label>
+                                                <label for="comprobante">Comprobante</label>
                                                 <input type="submit"> 
                                             </form>
--->
+
                                         </div>
                                         <!-- /PASO 8 -->
 
@@ -421,15 +353,12 @@ if ($paso!=0) {
                                         <div id="step-9">
                                             <h1 class="StepTitle">Bienvenido</h1>
                                             <p class="instruccion">
-                                            Completó su proceso de reinscripción.
+                                            Ha completado su proceso de reinscripción. Le damos la bienvenida y esperamos que este semestre sea de gran bendición.
                                             </p>
                                         </div>
                                         <!-- /PASO 9 -->
                                     </div>
                                     <!-- End SmartWizard Content -->    
-                                    <?php
-                                    
-                                    ?>
             </div>
         </div>
         <!-- /page content -->
