@@ -5,10 +5,9 @@ include("utils/conexion.php");
 include("template/todo.php");
 
 $matr=$_SESSION['login_user'];
-$query = "SELECT idPaso_r FROM pasos_r INNER JOIN reingreso_r ON reingreso_r.id_reingreso=pasos_r.id_reingreso where reingreso_r.matricula='$matr'";
-$result =  mysqli_query($conexion,$query);
+$query = "SELECT idPaso_r, reingreso_r.id_reingreso FROM pasos_r INNER JOIN reingreso_r ON reingreso_r.id_reingreso=pasos_r.id_reingreso where reingreso_r.matricula='$matr'";$result =  mysqli_query($conexion,$query);
 $row = mysqli_fetch_row($result);
-$paso = $row[0];
+if ($row[0]==1) $paso = $row[0]; else {$paso = $row[0]+1;}
 if ($paso!=0) {
     echo "<script>";
     echo "$(document).ready(function () {
@@ -27,7 +26,7 @@ if ($paso!=0) {
     echo "</script>"; 
     } 
 }                                                         
-    
+ $id_reingreso=$row[1];    
 ?>
 
             <!-- page content -->
@@ -212,9 +211,9 @@ if ($paso!=0) {
                                                 </tbody>
                                                         
                                             </table>
-                                            <form action="envia_solicitud.php" method="POST">                               
-                                            <input class="btn btn-default btn-sm" type="submit" name="Guardar" value="Enviar solicitud">
-                                            </form>
+                                            <form action="envia_solicitud.php" method="POST" enctype="multipart/form-data"> 
+                                             <input type="hidden" name="matr" value="<?php echo $matr; ?>"> <input class="btn btn-default btn-sm" type="submit" name="Guardar" value="Enviar solicitud">
+                                            </form>               
                                         </div>
                                         <!-- /PASO 2 -->
 
@@ -339,11 +338,57 @@ if ($paso!=0) {
                                             <p class="instruccion">
                                                 Al realizar el pago envíe su comprobante para que se verifique su pago.     
                                             </p>
-                                            <form action="guardar.php" method="POST" accept-charset="utf-8" enctype="multipart/form-data">
-                                                <input type="file" id="comprobante" name="comprobante">
-                                                <label for="comprobante">Comprobante</label>
-                                                <input type="submit"> 
-                                            </form>
+                                            <form action="guardar.php" method="POST" name="formularioSubirPago" id="formularioSubirPago" enctype="multipart/form-data">
+
+
+                                            <!-- Formulario para subir los archivos -->
+                                                <?php
+
+                                                     $queryVA = "select * from archivos_r where id_reingreso = $id_reingreso and iddocu = 36 ";
+                                                    $VA = $conexion->query($queryVA);
+                                                    $numVA = $VA->num_rows;
+
+
+                                                    if ($numVA) {
+                                                        while ($V = $VA->fetch_array()) {
+                                                                $nombreArchivo = $V['ruta'];
+                                                                $idArchivo = $V['id_archivos'];
+                                                            }
+                                                        if (isset($_GET['act'])) {
+                                                            echo '<table align="center">
+                                                            <tr>
+                                                                <td><input type="file" name="inputComprobante" id="archivos"></td><!-- Este es nuestro campo input File-->
+                                                            </tr>
+                                                            <input type="hidden" name="actualizar" value="actualizar">
+                                                        </table>
+                                                        <br><br>
+                                                        <a href=""><button id="enviar" class="botonLoginPrincipal">Enviar comprobante!</button></a>
+                                                ';
+                                                        } else {
+                                                            echo '<h2>Usted ya ha subido un comprobante de pago:</h2>';
+                                                            echo '<h2>Por favor espera a que el paso 9 este activada</h2>';
+                                                            echo '
+                                                                <tr>
+                                                                    <td><a target="_blank" href="files/'.$nombreArchivo.'">Comprobante de pago</a></td>
+                                                                    <td><a onclick="return confirm(\'¿Está seguro de borrar el archivo?\')" href="borrar.php?idArchivo='.$idArchivo.'&compag=true"><img style="width: 30px;" src="images/x.png"></a></td>
+                                                                </tr>
+                                                                ';
+                                                        }
+
+                                                    } else {
+
+
+
+                                                        echo '<div>  <input type="file" name="inputComprobante" id="archivos">
+                                                                                            <label for="archivos">Adjuntar documento de pago </label>
+                                                                                            <input type="submit"></div> ';
+
+
+                                                    }
+                                                ?>   
+                                                </form>
+
+
 
                                         </div>
                                         <!-- /PASO 8 -->

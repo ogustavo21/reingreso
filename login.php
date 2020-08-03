@@ -39,9 +39,9 @@ session_start();
                 }else {
 
                   echo'<script type="text/javascript">
-                  alert("El usuario o contraseña es inválido");
+                  alert("El usuario o contraseÃ±a es invÃ¡lido");
                   </script>';
-                      // $error = "El usuario o contraseña es inválido";
+                      // $error = "El usuario o contraseÃ±a es invÃ¡lido";
                 }
       }// tipo de ususario
 
@@ -95,18 +95,18 @@ session_start();
         <div id="wrapper">
             <div id="login" class="animate form">
                 <section class="login_content">
-                	<!--login form-->
+                  <!--login form-->
                     <form method="POST" action="#">
-                        <h1>Iniciar Sesión</h1>
+                        <h1>Iniciar SesiÃ³n</h1>
                         <div>
-                            <input type="text" class="form-control" placeholder="Matrícula" name="matricula" required="" />
+                            <input type="text" class="form-control" placeholder="MatrÃ­cula" name="matricula" required="" />
                         </div>
                         <div>
-                            <input type="password" class="form-control" placeholder="Contraseña" name="password" required="" />
+                            <input type="password" class="form-control" placeholder="ContraseÃ±a" name="password" required="" />
                         </div>
                         <div>
                             <input type="submit" value="Entrar">
-                              <a href="#toregister" class="to_register"> Regístrate </a>
+                              <a href="#toregister" class="to_register"> RegÃ­strate </a>
                         </div>
                         <div class="clearfix"></div>
                         <div class="separator">
@@ -116,7 +116,7 @@ session_start();
                             <div>
                                 <h4> Universidad de Navojoa</h4>
 
-                                <p>©2020 Todos los derechos reservados.Universidad de Navojoa. Depto. de Sistemas y Tecnología.</p>
+                                <p>Â©2020 Todos los derechos reservados.Universidad de Navojoa. Depto. de Sistemas y TecnologÃ­a.</p>
                             </div>
                         </div>
                     </form>
@@ -129,7 +129,7 @@ session_start();
                     <form method="POST" action="registro.php">
                         <h1>Registro</h1>
                          <div>
-                            <input name="matricula" type="text" class="form-control" placeholder="Matrícula" required="" />
+                            <input name="matricula" type="text" class="form-control" placeholder="MatrÃ­cula" required="" />
                         </div>
                         <div>
                             <input name="nombre" type="text" class="form-control" placeholder="Nombre(s)" required="" />
@@ -141,13 +141,13 @@ session_start();
                             <input name="materno" type="text" class="form-control" placeholder="Apellido Materno" required="" />
                         </div>
                          <div>
-                            <input name="telefono" type="text" class="form-control" placeholder="Teléfono" required="" />
+                            <input name="telefono" type="text" class="form-control" placeholder="TelÃ©fono" required="" />
                         </div>
                          <div>
                             <input name="correo" type="email" class="form-control" placeholder="Correo" required="" />
                         </div>
                          <div>
-                            <input name="contrasena" type="password" class="form-control" placeholder="Contraseña" required="" />
+                            <input name="contrasena" type="password" class="form-control" placeholder="ContraseÃ±a" required="" />
                         </div>
                         <div>
                           <input type="submit" href="registro.php" class="btn btn-default submit" value="Registrarse" />  
