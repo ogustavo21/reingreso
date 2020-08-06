@@ -23,7 +23,7 @@
 <!-- menu prile quick info -->
     <div class="profile">
         <div class="profile_pic">
-            <img src="/reingreso/images/picture.jpg" alt="..." class="img-circle profile_img">
+            <img src="/reingreso/images/user.png" alt="..." class="img-circle profile_img">
         </div>
         <div class="profile_info">
             <span>Bienvenido,</span>
@@ -49,7 +49,14 @@
                                 ?>  
                                     <li id="reportes" style=""><a href="/reingreso/index.php"><i class="fa fa-bar-chart"></i> Reinscripcion </a>
                                     </li>  
-     
+                                    <li><a><i class="fa fa-table"></i> Estadística <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu" style="display: none">
+                                        <li><a href="/reingreso/adminpage/reportes.php">Reporte</a>
+                                        </li>
+                                        <li><a href="/reingreso/adminpage/grafica.php">Gráfica</a>
+                                        </li>
+                                    </ul>
+                                </li>
                                 <?php
                                 } else {
                                 ?>
