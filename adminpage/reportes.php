@@ -25,13 +25,23 @@ include("../template/todo.php");
                         <div class="title_right">
                             <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search for...">
-                                    <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">Go!</button>
-                        </span>
+                                <form action="" method="POST" >
+                                <select name="carreras">
+                                <?php $sql="SELECT * FROM carrera ORDER BY id_carrera ASC";
+                                    $resultado=mysqli_query($conexion,$sql);
+                                    while ($lista=mysqli_fetch_array($resultado)) {
+
+                                ?>    
+                                    <option value=".$row['id_carrera']."><?php echo $lista['carrera']; ?></option>
+                                    <?php } ?>
+                                </select>
+                                <input type="submit" name="Buscar">
+                                
+                                </form>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                     <div class="clearfix"></div>
 
@@ -67,6 +77,7 @@ include("../template/todo.php");
                                         </thead>
                                         <?php
 
+                 $carr= $_POST['carreras'];                           
                  $tipo = $_SESSION['tipo'];//$rowTotal["tipo"];
                  $carrera =$_SESSION['id_carrera'];//$_SESSION['carrera'];
                 
@@ -83,7 +94,7 @@ include("../template/todo.php");
                 }else{$carrconsul = "";}
 
                 // lista por carrera y pasos
-            $sql = "SELECT * FROM reingreso_r INNER JOIN pasos_r ON reingreso_r.id_reingreso=pasos_r.id_reingreso INNER JOIN tpaso_r ON tpaso_r.idPaso_r=pasos_r.idPaso_r where pasos_r.estatus=1 $carrconsul  ORDER BY reingreso_r.id_reingreso DESC ";
+            $sql = "SELECT * FROM reingreso_r INNER JOIN pasos_r ON reingreso_r.id_reingreso=pasos_r.id_reingreso INNER JOIN tpaso_r ON tpaso_r.idPaso_r=pasos_r.idPaso_r where pasos_r.estatus=1 AND reingreso_r.id_carrera=$carr $carrconsul  ORDER BY reingreso_r.id_reingreso DESC ";
         $result = mysqli_query($conexion,$sql);
 
             while($key=$result->fetch_array(MYSQLI_ASSOC)) {
