@@ -25,14 +25,16 @@ include("../template/todo.php");
                         <div class="title_right">
                             <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                                 <div class="input-group">
-                                <form action="" method="POST" >
-                                <select name="carreras">
+                                <form action="#" method="POST" >
+                                <select name="carreras" class="form-control>
                                 <?php $sql="SELECT * FROM carrera ORDER BY id_carrera ASC";
                                     $resultado=mysqli_query($conexion,$sql);
                                     while ($lista=mysqli_fetch_array($resultado)) {
 
+                                    echo "string";
+
                                 ?>    
-                                    <option value=".$row['id_carrera']."><?php echo $lista['carrera']; ?></option>
+                                    <option value="<?php echo $lista['id_carrera']; ?>" "><?php echo $lista['carrera']; ?></option>
                                     <?php } ?>
                                 </select>
                                 <input type="submit" name="Buscar">
@@ -77,7 +79,8 @@ include("../template/todo.php");
                                         </thead>
                                         <?php
 
-                 $carr= $_POST['carreras'];                           
+                 $carr= $_POST['carreras']; 
+                 //echo "$carr";                          
                  $tipo = $_SESSION['tipo'];//$rowTotal["tipo"];
                  $carrera =$_SESSION['id_carrera'];//$_SESSION['carrera'];
                 

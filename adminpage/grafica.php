@@ -387,7 +387,7 @@ $.post("info.php",
                 //x: 'left',
                 x: 'center',
                 y: 'bottom',
-                data: ['Kinder','Primaria','Secundaria','Preparatoria', 'ISC', 'Teología','Enfermería','Ciencias de la Educación','Nutrición','Contaduría','Gastronomía', 'Diseño Gráfico',]
+                data: ['Kinder','Primaria','Secundaria','Preparatoria', 'ISC', 'Teología','Enfermería','CE','Nutrición','Contaduría','Gastronomía', 'Diseño Gráfico',]
             },
             toolbox: {
                 show: true,
