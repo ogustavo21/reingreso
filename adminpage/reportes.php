@@ -35,7 +35,7 @@ include("../template/todo.php");
                                     <option value="<?php echo $lista['id_carrera']; ?>" ><?php echo $lista['carrera']; ?></option>
                                     <?php } ?>
                                 </select>
-                                <input type="submit" name="Buscar">
+                                <input type="submit" name="Buscar" value="Buscar">
                                 
                                 </form>
                                 </div>
@@ -53,7 +53,7 @@ include("../template/todo.php");
                                     <option value="<?php echo $lista['idPaso_r']; ?>" ><?php echo $lista['tpaso_r']; ?></option>
                                     <?php } ?>
                                 </select>
-                                <input type="submit" name="Buscar">
+                                <input type="submit" name="Buscar" value="Buscar">
                                 
                                 </form>
                                 </div>
