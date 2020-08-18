@@ -35,13 +35,13 @@ include("../template/todo.php");
                                     <option value="<?php echo $lista['id_carrera']; ?>" ><?php echo $lista['carrera']; ?></option>
                                     <?php } ?>
                                 </select>
-                                <input type="submit" name="Buscar" value="Buscar">
+                                <input type="submit" class="btn btn-default" name="Buscar" value="Buscar">
                                 
                                 </form>
                                 </div>
                             </div>
 
-                            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                            <div class="col-md-6 col-sm-6 col-xs-12 form-group pull-right top_search">
                                 <div class="input-group">
                                 <form action="#" method="POST" >
                                 <select name="pasos" class="form-control">
@@ -53,7 +53,7 @@ include("../template/todo.php");
                                     <option value="<?php echo $lista['idPaso_r']; ?>" ><?php echo $lista['tpaso_r']; ?></option>
                                     <?php } ?>
                                 </select>
-                                <input type="submit" name="Buscar" value="Buscar">
+                                <input type="submit" class="btn btn-default" name="Buscar" value="Buscar">
                                 
                                 </form>
                                 </div>
@@ -63,11 +63,59 @@ include("../template/todo.php");
                     </div>
                     <div class="clearfix"></div>
 
+
+<?php
+ $carr= $_POST['carreras']; 
+                 $paso=$_POST['pasos'];
+                 //echo "$paso";
+                 //echo "$carr";                          
+                 $tipo = $_SESSION['tipo'];//$rowTotal["tipo"];
+                 $carrera =$_SESSION['id_carrera'];//$_SESSION['carrera'];
+                
+                ////elegir la consulta con carreras
+                if ($carrera>0){
+                    if ($carrera==12){
+                    $carrconsul = " and id_carrera in (12,13,14)";
+                    }elseif ($carrera==9){
+                    $carrconsul = " and id_carrera in (9,15,16,17,18,19,20,21,22,23)";
+                    }else {
+                    $carrconsul = " and id_carrera=$carrera";  
+                    }
+                    
+                }else{$carrconsul = "";}
+
+                if ($carr!=0) {
+                    $sql = "SELECT * FROM reingreso_r INNER JOIN pasos_r ON reingreso_r.id_reingreso=pasos_r.id_reingreso INNER JOIN tpaso_r ON tpaso_r.idPaso_r=pasos_r.idPaso_r where pasos_r.estatus=1 AND reingreso_r.id_carrera=$carr $carrconsul  ORDER BY reingreso_r.id_reingreso DESC ";
+      //  $result = mysqli_query($conexion,$sql);
+
+                    }else{
+                            $sql = "SELECT * FROM reingreso_r INNER JOIN pasos_r ON reingreso_r.id_reingreso=pasos_r.id_reingreso INNER JOIN tpaso_r ON tpaso_r.idPaso_r=pasos_r.idPaso_r where pasos_r.estatus=1 AND pasos_r.idPaso_r=$paso AND pasos_r.estatus=1 $carrconsul ORDER BY reingreso_r.id_reingreso DESC ";
+                            if($paso==0){
+                                    $sql = "SELECT * FROM `reingreso_r` where id_reingreso not in (SELECT id_reingreso from pasos_r)";
+
+                                 }
+                    
+        
+                }
+                $result = mysqli_query($conexion,$sql);
+                 $num=$result->num_rows;
+        // lista por carrera y pasos
+            
+
+
+?>
+
+
                     <div class="row">
                         <div class="col-md-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>Alumnos</h2>
+                                    <h2>Total de Alumnos: <?php echo $num;?></h2><br>
+                                     <div class="clearfix"></div>
+                                    <div class="alert alert-info alert-dismissible fade in" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">Ã—</span>
+                                    </button>¡Se muestran resultados con el estatus actual validadoÂ!
+                                </div>
                                     <ul class="nav navbar-right panel_toolbox">
                                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                         </li>
@@ -89,42 +137,13 @@ include("../template/todo.php");
                                                 <th>Correo</th>
                                                 <th>Matricula</th>
                                                 <th>-----</th>
-                                                <th style="width: 10%">Estatus</th>
+                                                <th style="width: 10%">Actual</th>
                                                 <th style="width: 10%"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></th>
                                             </tr>
                                         </thead>
                                         <?php
 
-                 $carr= $_POST['carreras']; 
-                 $paso=$_POST['pasos'];
-                 echo "$paso";
-                 //echo "$carr";                          
-                 $tipo = $_SESSION['tipo'];//$rowTotal["tipo"];
-                 $carrera =$_SESSION['id_carrera'];//$_SESSION['carrera'];
                 
-                ////elegir la consulta con carreras
-                if ($carrera>0){
-                    if ($carrera==12){
-                    $carrconsul = " and id_carrera in (12,13,14)";
-                    }elseif ($carrera==9){
-                    $carrconsul = " and id_carrera in (9,15,16,17,18,19,20,21,22,23)";
-                    }else {
-                    $carrconsul = " and id_carrera=$carrera";  
-                    }
-                    
-                }else{$carrconsul = "";}
-
-                if ($carr!=0) {
-                    $sql = "SELECT * FROM reingreso_r INNER JOIN pasos_r ON reingreso_r.id_reingreso=pasos_r.id_reingreso INNER JOIN tpaso_r ON tpaso_r.idPaso_r=pasos_r.idPaso_r where pasos_r.estatus=1 AND reingreso_r.id_carrera=$carr $carrconsul  ORDER BY reingreso_r.id_reingreso DESC ";
-        $result = mysqli_query($conexion,$sql);
-
-                }else{
-                    $sql = "SELECT * FROM reingreso_r INNER JOIN pasos_r ON reingreso_r.id_reingreso=pasos_r.id_reingreso INNER JOIN tpaso_r ON tpaso_r.idPaso_r=pasos_r.idPaso_r where pasos_r.estatus=1 AND pasos_r.idPaso_r=$paso $carrconsul ORDER BY reingreso_r.id_reingreso DESC ";
-        $result = mysqli_query($conexion,$sql);
-                }
-                // lista por carrera y pasos
-            
-
             while($key=$result->fetch_array(MYSQLI_ASSOC)) {
         $id=$key['id_reingreso'];
         $matricula=$key['matricula'];
@@ -183,9 +202,9 @@ include("../template/todo.php");
                                                                 <div class="modal-content">
 
                                                                     <div class="modal-header">
-                                                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">Ã—</span>
+                                                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">Ãƒâ€”</span>
                                                                         </button>
-                                                                        <h4 class="modal-title" id="myModalLabel"> Datos AcadÃ©micos</h4>
+                                                                        <h4 class="modal-title" id="myModalLabel"> Datos AcadÃƒÂ©micos</h4>
                                                                     </div>
                                                                     <div class="modal-body">
                                                                         <h4></h4>
