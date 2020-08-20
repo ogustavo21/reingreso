@@ -10,48 +10,48 @@
     $row = mysqli_fetch_row($result);
     $paso0= $row[0];
 
-    $query="SELECT COUNT(*) FROM reingreso_r INNER JOIN pasos_r ON reingreso_r.id_reingreso=pasos_r.id_reingreso where pasos_r.estatus=1 and idPaso_r=1";
+    $query="SELECT COUNT(*) FROM pasos_r INNER JOIN tpaso_r ON pasos_r.idPaso_r=tpaso_r.idPaso_r where pasos_r.estatus=1 and pasos_r.idPaso_r=1";
     //$resultado=mysqli_query($conexion,$sql);
     $result = mysqli_query($conexion,$query);
     $row = mysqli_fetch_row($result);
     $paso1 = $row[0];
 
-    $sql="SELECT COUNT(*) FROM reingreso_r INNER JOIN pasos_r ON reingreso_r.id_reingreso=pasos_r.id_reingreso where pasos_r.estatus=1 and idPaso_r=2";
+    $sql="SELECT COUNT(*) FROM pasos_r INNER JOIN tpaso_r ON pasos_r.idPaso_r=tpaso_r.idPaso_r where pasos_r.estatus=1 and pasos_r.idPaso_r=2";
     $result = mysqli_query($conexion,$sql);
     $row = mysqli_fetch_row($result);
     $paso2 = $row[0];
 
-    $sql="SELECT COUNT(*) FROM reingreso_r INNER JOIN pasos_r ON reingreso_r.id_reingreso=pasos_r.id_reingreso where pasos_r.estatus=1 and idPaso_r=3";
+    $sql="SELECT COUNT(*) FROM pasos_r INNER JOIN tpaso_r ON pasos_r.idPaso_r=tpaso_r.idPaso_r where pasos_r.estatus=1 and pasos_r.idPaso_r=3";
     $result = mysqli_query($conexion,$sql);
     $row = mysqli_fetch_row($result);
     $paso3 = $row[0];
 
-    $sql="SELECT COUNT(*) FROM reingreso_r INNER JOIN pasos_r ON reingreso_r.id_reingreso=pasos_r.id_reingreso where pasos_r.estatus=1 and idPaso_r=4";
+    $sql="SELECT COUNT(*) FROM pasos_r INNER JOIN tpaso_r ON pasos_r.idPaso_r=tpaso_r.idPaso_r where pasos_r.estatus=1 and pasos_r.idPaso_r=4";
     $result = mysqli_query($conexion,$sql);
     $row = mysqli_fetch_row($result);
     $paso4 = $row[0];
 
-    $sql="SELECT COUNT(*) FROM reingreso_r INNER JOIN pasos_r ON reingreso_r.id_reingreso=pasos_r.id_reingreso where pasos_r.estatus=1 and idPaso_r=5";
+    $sql="SELECT COUNT(*) FROM pasos_r INNER JOIN tpaso_r ON pasos_r.idPaso_r=tpaso_r.idPaso_r where pasos_r.estatus=1 and pasos_r.idPaso_r=5";
     $result = mysqli_query($conexion,$sql);
     $row = mysqli_fetch_row($result);
     $paso5 = $row[0];
 
-    $sql="SELECT COUNT(*) FROM reingreso_r INNER JOIN pasos_r ON reingreso_r.id_reingreso=pasos_r.id_reingreso where pasos_r.estatus=1 and idPaso_r=6";
+    $sql="SELECT COUNT(*) FROM pasos_r INNER JOIN tpaso_r ON pasos_r.idPaso_r=tpaso_r.idPaso_r where pasos_r.estatus=1 and pasos_r.idPaso_r=6";
     $result = mysqli_query($conexion,$sql);
     $row = mysqli_fetch_row($result);
     $paso6 = $row[0];
 
-    $sql="SELECT COUNT(*) FROM reingreso_r INNER JOIN pasos_r ON reingreso_r.id_reingreso=pasos_r.id_reingreso where pasos_r.estatus=1 and idPaso_r=7";
+    $sql="SELECT COUNT(*) FROM pasos_r INNER JOIN tpaso_r ON pasos_r.idPaso_r=tpaso_r.idPaso_r where pasos_r.estatus=1 and pasos_r.idPaso_r=7";
     $result = mysqli_query($conexion,$sql);
     $row = mysqli_fetch_row($result);
     $paso7 = $row[0];
 
-    $sql="SELECT COUNT(*) FROM reingreso_r INNER JOIN pasos_r ON reingreso_r.id_reingreso=pasos_r.id_reingreso where pasos_r.estatus=1 and idPaso_r=8";
+    $sql="SELECT COUNT(*) FROM pasos_r INNER JOIN tpaso_r ON pasos_r.idPaso_r=tpaso_r.idPaso_r where pasos_r.estatus=1 and pasos_r.idPaso_r=8";
     $result = mysqli_query($conexion,$sql);
     $row = mysqli_fetch_row($result);
     $paso8 = $row[0];
 
-    $sql="SELECT COUNT(*) FROM reingreso_r INNER JOIN pasos_r ON reingreso_r.id_reingreso=pasos_r.id_reingreso where pasos_r.estatus=1 and idPaso_r=9";
+    $sql="SELECT COUNT(*) FROM pasos_r INNER JOIN tpaso_r ON pasos_r.idPaso_r=tpaso_r.idPaso_r where pasos_r.estatus=1 and pasos_r.idPaso_r=9";
     $result = mysqli_query($conexion,$sql);
     $row = mysqli_fetch_row($result);
     $paso9 = $row[0];
@@ -106,14 +106,14 @@
                                 </div>
                                 <div class="x_content">
                                 <!-- Custom styling plus plugins -->
-                        <div class="col-md-8 col-sm-4 col-xs-12">
+                                <div class="col-md-8 col-sm-4 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
                                     <h2>Por pasos</h2>
                                 
                                     <div class="clearfix"></div>
                                 <div class="alert alert-info alert-dismissible fade in" role="alert">
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">x</span>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">Ã—</span>
                                     </button>!Se muestran resultados con el estatus actual validadoÂ¡
                                 </div>
                                 </div>
@@ -125,7 +125,7 @@
                             </div>
                         </div>
                         <!-- Custom styling plus plugins -->
-
+<!-- Tabla de pasos -->
                         <table class="table-striped responsive-utilities jambo_table col-md-4">
                                 <thead>
                                     <tr>
@@ -150,8 +150,7 @@
 
                                 </tbody>
                         </table>
-
-                    
+                        
 <?php
     $sql1="SELECT COUNT(*) FROM reingreso_r INNER JOIN pasos_r ON reingreso_r.id_reingreso=pasos_r.id_reingreso where pasos_r.estatus=1 and reingreso_r.id_carrera=1";
     $result = mysqli_query($conexion,$sql1);
@@ -220,8 +219,8 @@
                                     <h2>Por escuelas en proceso</h2>
                                     <div class="clearfix"></div>
                                         <div class="alert alert-info alert-dismissible fade in" role="alert">
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">x</span>
-                                        </button>!Se muestran resultados sin tomar en cuenta a los que no han validado su correo¡
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">Ã—</span>
+                                        </button>!Se muestran resultados sin tomar en cuenta a los que no han validado su correoÂ¡
                                         </div>
                                 </div>
                                 <div class="x_content">
@@ -616,4 +615,4 @@ $.post("info.php",
             <?php
             include("../template/footer.php");
             ?>
-            <!-- /footer content -->
+            <!-- /footer content -->    
