@@ -55,6 +55,8 @@
                                         </li>
                                         <li><a href="/reingreso/adminpage/grafica.php">Gráfica</a>
                                         </li>
+                                        <li><a href="/reingreso/adminpage/nuevo_ingreso.php">Nuevo ingreso</a>
+                                        </li>
                                     </ul>
                                 </li>
                                 <?php
